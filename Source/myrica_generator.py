@@ -23,16 +23,20 @@
 #
 
 # version
-newfont_version      = "1.001.20140829"
+newfont_version      = "1.002.20140903"
 newfont_sfntRevision = 0x00010000
 
 # flag
 scalingDownIfWidth_flag = True
 
 # set font name
-newfontM = ("../../MyricaSourceTTF/MyricaM.ttf", "MyricaM", "Myrica M", "Myrica Monospace")
-newfontP = ("../../MyricaSourceTTF/MyricaP.ttf", "MyricaP", "Myrica P", "Myrica Proportional")
-newfontN = ("../../MyricaSourceTTF/MyricaN.ttf", "MyricaN", "Myrica N", "Myrica Narrow")
+newfontM  = ("../../MyricaSourceTTF/MyricaM.ttf",   "MyricaM",  "Myrica M",  "Myrica Monospace")
+newfontP  = ("../../MyricaSourceTTF/MyricaP.ttf",   "MyricaP",  "Myrica P",  "Myrica Proportional")
+newfontN  = ("../../MyricaSourceTTF/MyricaN.ttf",   "MyricaN",  "Myrica N",  "Myrica Narrow")
+
+#newfontHM = ("../../MyricaSourceTTF/MyricaHMs.ttf", "MyricaHM", "MyricaH M", "MyricaH Monospace")
+#newfontHP = ("../../MyricaSourceTTF/MyricaHPs.ttf", "MyricaHP", "MyricaH P", "MyricaH Proportional")
+#newfontHN = ("../../MyricaSourceTTF/MyricaHNs.ttf", "MyricaHN", "MyricaH N", "MyricaH Narrow")
 
 # set ascent and descent (line width parameters)
 newfont_ascent  = 840
@@ -125,18 +129,17 @@ def copyAndPaste(srcFont, srcCodes, dstFont, dstCodes):
     select(dstFont, dstCodes)
     dstFont.paste()
 
-def copyAndPasteInto(srcFont, srcCode, dstFont, dstCode, pos_x, pos_y):
-    srcFont.selection.select(("more",), srcCode)
+def copyAndPasteInto(srcFont, srcCodes, dstFont, dstCodes, pos_x, pos_y):
+    select(srcFont, srcCodes)
     srcFont.copy()
+    select(dstFont, dstCodes)
     dstFont.transform(matMove(-pos_x, -pos_y))
     dstFont.pasteInto()
     dstFont.transform(matMove(pos_x, pos_y))
 
 def select(font, *codes):
     font.selection.none()
-    flat = flatten(codes)
-    for c in flat:
-        font.selection.select(("more",), c)
+    selectMore(font, codes)
 
 def selectMore(font, *codes):
     flat = flatten(codes)
@@ -156,22 +159,13 @@ def setWidth(font, width):
     for glyph in font.selection.byGlyphs:
         glyph.width = width
 
-def setAutoWidth(font, separation):
-    for glyph in font.selection.byGlyphs:
-        bb = glyph.boundingBox()
-        bc = (bb[0] + bb[2]) / 2
-        nw = (bb[2] - bb[0]) + separation * 2
-        wc = nw / 2
-        glyph.transform(matMove(wc - bc, 0))
-        glyph.width = nw
-
 def setAutoWidthGlyph(glyph, separation):
-        bb = glyph.boundingBox()
-        bc = (bb[0] + bb[2]) / 2
-        nw = (bb[2] - bb[0]) + separation * 2
-        wc = nw / 2
-        glyph.transform(matMove(wc - bc, 0))
-        glyph.width = nw
+    bb = glyph.boundingBox()
+    bc = (bb[0] + bb[2]) / 2
+    nw = (bb[2] - bb[0]) + separation * 2
+    wc = nw / 2
+    glyph.transform(matMove(wc - bc, 0))
+    glyph.width = nw
 
 ########################################
 # modified Inconsolata
@@ -295,9 +289,9 @@ print
 print "Build " + newfontM[0]
 
 # pre-process
-fRm.fontname = newfontM[1]
+fRm.fontname   = newfontM[1]
 fRm.familyname = newfontM[2]
-fRm.fullname = newfontM[3]
+fRm.fullname   = newfontM[3]
 fRm.weight = "Book"
 fRm.copyright =  "Copyright (c) 2006-2012 Raph Levien (Inconsolata)\n"
 fRm.copyright += "Copyright (c) 2013 itouhiro (Circle M+)\n"
@@ -311,7 +305,8 @@ fRm.copyright += "Apache License, Version 2.0 "
 fRm.copyright += "(http://www.apache.org/licenses/LICENSE-2.0)"
 fRm.version = newfont_version
 fRm.sfntRevision = newfont_sfntRevision
-fRm.sfnt_names = ()
+fRm.sfnt_names = (('English (US)', 'UniqueID', newfontM[2]), )
+fRm.head_optimized_for_cleartype = True
 
 fRm.os2_panose = panoseBase
 fRm.os2_vendor = fMg.os2_vendor
@@ -379,7 +374,8 @@ if scalingDownIfWidth_flag == True:
 
 # 全角 comma and period ，．
 select(fRm, 0xff0c, 0xff0e)
-fRm.transform(matRescale(102, 0, 1.54, 1.54))
+fRm.transform(matMove(280, 0))
+fRm.transform(matRescale(512, 0, 1.54, 1.54))
 setWidth(fRm, newfont_em)
 
 # 全角 colon and semicolon ：；
@@ -388,7 +384,6 @@ copyAndPasteInto(fRm, 0xff0e, fRm, 0xff1b, 0, 410)
 copyAndPaste    (fRm, 0xff0e, fRm, 0xff1a)
 copyAndPasteInto(fRm, 0xff0e, fRm, 0xff1a, 0, 410)
 select(fRm, 0xff1b, 0xff1a)
-centerInWidth(fRm)
 
 # 全角 brackets （）［］｛｝＜＞
 srcTarget = (0x0028, 0x0029, 0x005b, 0x005d, 0x007b, 0x007d, 0x003c, 0x003e)
@@ -403,7 +398,14 @@ fRm.round()
 
 print "Generate " + newfontM[0]
 fRm.generate(newfontM[0], '', generate_flags)
-#fRm.close()
+
+#print "Generate " + newfontHM[0]
+#fRm.fontname   = newfontHM[1]
+#fRm.familyname = newfontHM[2]
+#fRm.fullname   = newfontHM[3]
+#fRm.sfnt_names = (('English (US)', 'UniqueID', newfontHM[2]), )
+#fRm.generate(newfontHM[0], '', generate_flags)
+
 fPa.close()
 fMg.close()
 fMi.close()
@@ -416,9 +418,10 @@ print "Build " + newfontP[0]
 fRp = fontforge.open( newfontM[0] )
 
 # pre-process
-fRp.fontname = newfontP[1]
+fRp.fontname   = newfontP[1]
 fRp.familyname = newfontP[2]
-fRp.fullname = newfontP[3]
+fRp.fullname   = newfontP[3]
+fRp.sfnt_names = (('English (US)', 'UniqueID', newfontP[2]), )
 
 panose = list(fRp.os2_panose)
 panose[3] = 0
@@ -455,6 +458,14 @@ fRp.round()
 
 print "Generate " + newfontP[0]
 fRp.generate(newfontP[0], '', generate_flags)
+
+#print "Generate " + newfontHP[0]
+#fRp.fontname   = newfontHP[1]
+#fRp.familyname = newfontHP[2]
+#fRp.fullname   = newfontHP[3]
+#fRp.sfnt_names = (('English (US)', 'UniqueID', newfontHP[2]), )
+#fRp.generate(newfontHP[0], '', generate_flags)
+
 fRp.close()
 
 ########################################
@@ -465,9 +476,10 @@ print "Build " + newfontN[0]
 fRn = fontforge.open( newfontM[0] )
 
 # pre-process
-fRn.fontname = newfontN[1]
+fRn.fontname   = newfontN[1]
 fRn.familyname = newfontN[2]
-fRn.fullname = newfontN[3]
+fRn.fullname   = newfontN[3]
+fRn.sfnt_names = (('English (US)', 'UniqueID', newfontN[2]), )
 
 panose = list(fRn.os2_panose)
 panose[3] = 0
@@ -507,9 +519,6 @@ for glyph in fRn.selection.byGlyphs:
         if glyph.width > nw:
             setAutoWidthGlyph(glyph, hetc[2])
 
-# 全文字の幅の自動設定
-fRn.selection.all()
-
 # 半角数字は幅固定で中央配置
 select(fRn, rng(0x0030,0x0039))   # 0-9
 setWidth(fRn, 400)
@@ -521,4 +530,12 @@ fRn.round()
 
 print "Generate " + newfontN[0]
 fRn.generate(newfontN[0], '', generate_flags)
+
+#print "Generate " + newfontHN[0]
+#fRn.fontname   = newfontHN[1]
+#fRn.familyname = newfontHN[2]
+#fRn.fullname   = newfontHN[3]
+#fRn.sfnt_names = (('English (US)', 'UniqueID', newfontHN[2]), )
+#fRn.generate(newfontHN[0], '', generate_flags)
+
 fRn.close()
