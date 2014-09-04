@@ -23,7 +23,7 @@
 #
 
 # version
-newfont_version      = "1.003.20140904"
+newfont_version      = "1.004.20140904"
 newfont_sfntRevision = 0x00010000
 
 # flag
@@ -362,7 +362,7 @@ target = (
     # φЯなど一部のキリル文字を全角に
     list(u"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя"),
     # ±×÷√‰§†‡¶などの記号を全角に
-    list(u"±×÷√‰§†‡¶´¨‘’“”°′″"),)
+    list(u"±×÷√‰§†‡¶´¨‘’“”°′″→←↑↓"),)
 copyAndPaste(fMi, target, fMm, target)
 
 # modify
@@ -372,7 +372,6 @@ print "modify"
 if scalingDownIfWidth_flag == True:
     print "While scaling, wait a little..."
     scalingDownIfWidth(fMm, newfont_em)
-
 
 # 全角 comma and period ，．
 select(fMm, 0xff0c, 0xff0e)
