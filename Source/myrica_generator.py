@@ -7,7 +7,7 @@
 # This script is for generating ``myrica'' font
 #
 # * Inconsolata : Inconsolata-Regular.ttf : 1.013 (Google Fonts)
-# * (original)  : ReplaceParts.ttf        : 1.000.20140825
+# * (original)  : ReplaceParts.ttf        : 1.005.20140905
 # * Mgen+       : mgenplus-1m-regular.ttf : 1.058.20140808 (20140828)
 # * Migu        : migu-1m-regular.ttf     : 2013.0617 (20130617)
 #
@@ -23,7 +23,7 @@
 #
 
 # version
-newfont_version      = "1.004.20140904"
+newfont_version      = "1.005.20140905"
 newfont_sfntRevision = 0x00010000
 
 # flag
@@ -305,6 +305,11 @@ fMm.copyright += "(http://www.apache.org/licenses/LICENSE-2.0)"
 fMm.version = newfont_version
 fMm.sfntRevision = newfont_sfntRevision
 fMm.sfnt_names = (('English (US)', 'UniqueID', newfontM[2]), )
+#('Japanese', 'PostScriptName', newfontM[2]), 
+#('Japanese', 'Family', newfontM[1]), 
+#('Japanese', 'Fullname', newfontM[3]), 
+
+fMm.hasvmetrics = True
 fMm.head_optimized_for_cleartype = True
 
 fMm.os2_panose = panoseBase
@@ -362,7 +367,7 @@ target = (
     # φЯなど一部のキリル文字を全角に
     list(u"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя"),
     # ±×÷√‰§†‡¶などの記号を全角に
-    list(u"±×÷√‰§†‡¶´¨‘’“”°′″→←↑↓"),)
+    list(u"±×÷√‰§†‡¶´¨‘’“”°′″→←↑↓№∥"),)
 copyAndPaste(fMi, target, fMm, target)
 
 # modify
