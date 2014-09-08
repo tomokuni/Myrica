@@ -23,7 +23,7 @@
 #
 
 # version
-newfont_version      = "1.005.20140905"
+newfont_version      = "1.006.20140909"
 newfont_sfntRevision = 0x00010000
 
 # flag
@@ -166,6 +166,18 @@ def setAutoWidthGlyph(glyph, separation):
     glyph.transform(matMove(wc - bc, 0))
     glyph.width = nw
 
+def autoHintAndInstr(font, *codes):
+    select(font, codes)
+    for glyph in font.selection.byGlyphs:
+        if glyph.isWorthOutputting() == True:
+            glyph.manualHints = False
+            glyph.ttinstrs = ()
+            glyph.dhints = ()
+            glyph.hhints = ()
+            glyph.vhints = ()
+    font.autoHint()
+    font.autoInstr()
+
 ########################################
 # modified Inconsolata
 ########################################
@@ -257,11 +269,11 @@ print
 print "Open " + srcfontMgenplus
 fMg = fontforge.open( srcfontMgenplus )
 
-## modify em
-#fMg.em  = newfont_em
-#fMg.ascent  = newfont_ascent
-#fMg.descent = newfont_descent
-#
+# modify em
+fMg.em  = newfont_em
+fMg.ascent  = newfont_ascent
+fMg.descent = newfont_descent
+
 #fMg.generate("/modMgenplus.ttf", '', generate_flags)
 
 ########################################
@@ -398,6 +410,13 @@ copyAndPaste(fMm, srcTarget, fMm, dstTarget)
 fMm.transform(matMove(256, 0))
 setWidth(fMm, newfont_em)
 
+# 拡大/移動したフォントへのヒンティングの再設定
+autoHintAndInstr(fMm, list(u"\"'`,.:;+-<>=~()[]{}!?"))
+
+# ひらがな/カタカナへのヒンティングの設定
+#autoHintAndInstr(fMm, rng(0x3041, 0x31FF))
+autoHintAndInstr(fMm, list(u"うらりるぱぴぷぺぽイウタホミラリザジダヅデパピプペポ"))
+
 # post-process
 fMm.selection.all()
 fMm.round()
@@ -500,7 +519,7 @@ hetc  = (0.85, 1.00, 50)
 fMn.selection.all()
 for glyph in fMn.selection.byGlyphs:
     #print glyph.glyphname + ", code " + str(glyph.unicode) + ", width " + str(glyph.width)
-    glyph.ttinstrs = ""
+    glyph.ttinstrs = ()
     if glyph.unicode in zkana[3]:           # 全角かな
         glyph.transform(matRescale(0, 0, zkana[0], zkana[1]))
         setAutoWidthGlyph(glyph, zkana[2])
