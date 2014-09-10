@@ -23,7 +23,7 @@
 #
 
 # version
-newfont_version      = "1.006.20140909"
+newfont_version      = "1.007.20140910"
 newfont_sfntRevision = 0x00010000
 
 # flag
@@ -415,7 +415,7 @@ autoHintAndInstr(fMm, list(u"\"'`,.:;+-<>=~()[]{}!?"))
 
 # ひらがな/カタカナへのヒンティングの設定
 #autoHintAndInstr(fMm, rng(0x3041, 0x31FF))
-autoHintAndInstr(fMm, list(u"うらりるぱぴぷぺぽイウタホミラリザジダヅデパピプペポ"))
+autoHintAndInstr(fMm, list(u"うおかがこごただてでとどねぱぴぷぺぽむらりるゔイウギザジタダヅテデナパピプペホポミラリヮワヲヷヺ゙゚゛゜"))
 
 # post-process
 fMm.selection.all()
