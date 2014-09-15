@@ -11,11 +11,11 @@
 # * Mgen+       : mgenplus-1m-regular.ttf : 1.058.20140808 (20140828)
 # * Migu        : migu-1m-regular.ttf     : 2013.0617 (20130617)
 #
-#以下のように構成されます。
-#・英数字記号は、Inconsolata-Regular.ttf と ReplaceParts.ttf
+#基本的には以下のように構成されます。
+#・英数字記号は、Inconsolata-Regular.ttf 
 #・他の文字は、mgenplus-1m-regular.ttf
-#・一部の文字は、circle-mplus-1m-regular.ttf
-#    対象：・半濁点（ぱぴぷぺぽパピプペポ の右上の円）を大きくして、濁点と判別しやすく
+#・一部の漢字(力工口一二)を除くJIS208/JIS213の文字は、circle-mplus-1m-regular.ttf 由来の文字に置換え
+#    目的：・半濁点（ぱぴぷぺぽパピプペポ の右上の円）を大きくして、濁点と判別しやすく
 #          ・「カ力 エ工 ロ口 ー一 ニ二」（カタカナ・漢字）の区別
 #          ・～〜（FULLWIDTH TILDE・WAVE DASH）の区別
 #          ・αβなど一部のギリシャ文字、φЯなど一部のキリル文字を全角に
@@ -23,16 +23,16 @@
 #
 
 # version
-newfont_version      = "1.007.20140910"
+newfont_version      = "1.008.20140915"
 newfont_sfntRevision = 0x00010000
 
 # flag
 scalingDownIfWidth_flag = True
 
 # set font name
-newfontM  = ("../../MyricaSourceTTF/MyricaM.ttf",   "MyricaM",  "Myrica M",  "Myrica Monospace")
-newfontP  = ("../../MyricaSourceTTF/MyricaP.ttf",   "MyricaP",  "Myrica P",  "Myrica Proportional")
-newfontN  = ("../../MyricaSourceTTF/MyricaN.ttf",   "MyricaN",  "Myrica N",  "Myrica Narrow")
+newfontM  = ("../../MyricaSourceTTF/MyricaM.ttf", "MyricaM", "Myrica M", "Myrica Monospace")
+newfontP  = ("../../MyricaSourceTTF/MyricaP.ttf", "MyricaP", "Myrica P", "Myrica Proportional")
+newfontN  = ("../../MyricaSourceTTF/MyricaN.ttf", "MyricaN", "Myrica N", "Myrica Narrow")
 
 # set ascent and descent (line width parameters)
 newfont_ascent  = 840
@@ -44,6 +44,7 @@ srcfontIncosolata   = "../../MyricaSourceTTF/Inconsolata-Regular.ttf"
 srcfontMgenplus     = "../../MyricaSourceTTF/mgenplus-1m-regular.ttf"
 srcfontMigu         = "../../MyricaSourceTTF/migu-1m-regular.ttf"
 srcfontReplaceParts = "ReplaceParts.ttf"
+srcfontHintingParts = "HintingParts.ttf"
 
 # define
 generate_flags = ('opentype', 'PfEd-lookups', 'TeX-table')
@@ -56,6 +57,7 @@ panoseBase = (2, 11, 5, 9, 2, 2, 3, 2, 2, 7)
 import copy
 import os
 import sys
+import shutil
 import fontforge
 import psMat
 
@@ -167,6 +169,11 @@ def setAutoWidthGlyph(glyph, separation):
     glyph.width = nw
 
 def autoHintAndInstr(font, *codes):
+    removeHintAndInstr(font, codes)
+    font.autoHint()
+    font.autoInstr()
+
+def removeHintAndInstr(font, *codes):
     select(font, codes)
     for glyph in font.selection.byGlyphs:
         if glyph.isWorthOutputting() == True:
@@ -175,8 +182,72 @@ def autoHintAndInstr(font, *codes):
             glyph.dhints = ()
             glyph.hhints = ()
             glyph.vhints = ()
-    font.autoHint()
-    font.autoInstr()
+
+def copyTti(srcFont, dstFont):
+    for glyphName in dstFont:
+        dstFont.setTableData('fpgm', srcFont.getTableData('fpgm'))
+        dstFont.setTableData('prep', srcFont.getTableData('prep'))
+        dstFont.setTableData('cvt',  srcFont.getTableData('cvt'))
+        dstFont.setTableData('maxp', srcFont.getTableData('maxp'))
+        copyTtiByGlyphName(srcFont, dstFont, glyphName)
+
+def copyTtiByGlyphName(srcFont, dstFont, glyphName):
+    try:
+        dstGlyph = dstFont[glyphName]
+        srcGlyph = srcFont[glyphName]
+        if srcGlyph.isWorthOutputting() == True and dstGlyph.isWorthOutputting() == True:
+            dstGlyph.manualHints = True
+            dstGlyph.ttinstrs = srcFont[glyphName].ttinstrs
+            dstGlyph.dhints = srcFont[glyphName].dhints
+            dstGlyph.hhints = srcFont[glyphName].hhints
+            dstGlyph.vhints = srcFont[glyphName].vhints
+    except TypeError:
+        pass
+
+def setFontProp(font, fontInfo):
+    font.fontname   = fontInfo[1]
+    font.familyname = fontInfo[2]
+    font.fullname   = fontInfo[3]
+    font.weight = "Book"
+    font.copyright =  "Copyright (c) 2006-2012 Raph Levien (Inconsolata)\n"
+    font.copyright += "Copyright (c) 2013 M+ FONTS PROJECT (M+)\n"
+    font.copyright += "Copyright (c) 2013 itouhiro (Migu)\n"
+    font.copyright += "Copyright (c) 2014 MM (Mgen+)\n"
+    font.copyright += "Copyright (c) 2014 Adobe Systems Incorporated. (NotoSansJP)\n"
+    font.copyright += "Licenses:\n"
+    font.copyright += "SIL Open Font License Version 1.1 "
+    font.copyright += "(http://scripts.sil.org/ofl)\n"
+    font.copyright += "Apache License, Version 2.0 "
+    font.copyright += "(http://www.apache.org/licenses/LICENSE-2.0)"
+    font.version = newfont_version
+    font.sfntRevision = newfont_sfntRevision
+    font.sfnt_names = (('English (US)', 'UniqueID', fontInfo[2]), )
+    #('Japanese', 'PostScriptName', fontInfo[2]), 
+    #('Japanese', 'Family', fontInfo[1]), 
+    #('Japanese', 'Fullname', fontInfo[3]), 
+
+    font.hasvmetrics = True
+    font.head_optimized_for_cleartype = True
+
+    font.os2_panose = panoseBase
+    font.os2_vendor = "M+"
+    font.os2_version = 1
+
+    font.os2_winascent = newfont_ascent
+    font.os2_winascent_add = 0
+    font.os2_windescent = newfont_descent
+    font.os2_windescent_add = 0
+    font.os2_typoascent = newfont_ascent
+    font.os2_typoascent_add = 0
+    font.os2_typodescent = -newfont_descent
+    font.os2_typodescent_add = 0
+    font.os2_typolinegap
+    font.hhea_ascent = newfont_ascent
+    font.hhea_ascent_add = 0
+    font.hhea_descent = -newfont_descent
+    font.hhea_descent_add = 0
+    font.hhea_linegap = 0
+
 
 ########################################
 # modified Inconsolata
@@ -248,18 +319,18 @@ setWidth(fIn, newfont_em / 2)
 
 print
 print "Open " + srcfontReplaceParts
-fPa = fontforge.open( srcfontReplaceParts )
+fRp = fontforge.open( srcfontReplaceParts )
 
 # modify em
-fPa.em  = newfont_em
-fPa.ascent  = newfont_ascent
-fPa.descent = newfont_descent
+fRp.em  = newfont_em
+fRp.ascent  = newfont_ascent
+fRp.descent = newfont_descent
 
 # post-process
-fPa.selection.all()
-fPa.round()
+fRp.selection.all()
+fRp.round()
 
-#fPa.generate("/modReplaceParts.ttf", '', generate_flags)
+#fRp.generate("/modReplaceParts.ttf", '', generate_flags)
 
 ########################################
 # modified Mgen+ 1m
@@ -273,6 +344,14 @@ fMg = fontforge.open( srcfontMgenplus )
 fMg.em  = newfont_em
 fMg.ascent  = newfont_ascent
 fMg.descent = newfont_descent
+
+# modify
+print "modify"
+
+# scaling down
+if scalingDownIfWidth_flag == True:
+    print "While scaling, wait a little..."
+    scalingDownIfWidth(fMg, newfont_em)
 
 #fMg.generate("/modMgenplus.ttf", '', generate_flags)
 
@@ -289,6 +368,21 @@ fMi.em  = newfont_em
 fMi.ascent  = newfont_ascent
 fMi.descent = newfont_descent
 
+# modify
+print "modify"
+
+# 全角 brackets （）［］｛｝＜＞
+srcTarget = (0x0028, 0x0029, 0x005b, 0x005d, 0x007b, 0x007d, 0x003c, 0x003e)
+dstTarget = (0xff08, 0xff09, 0xff3b, 0xff3d, 0xff5b, 0xff5d, 0xff1c, 0xff1e)
+copyAndPaste(fMi, srcTarget, fMi, dstTarget)
+setWidth(fMi, newfont_em)
+centerInWidth(fMi)
+
+# scaling down
+if scalingDownIfWidth_flag == True:
+    print "While scaling, wait a little..."
+    scalingDownIfWidth(fMi, newfont_em)
+
 #fMi.generate("/modMigu.ttf", '', generate_flags)
 
 ########################################
@@ -300,64 +394,25 @@ print
 print "Build " + newfontM[0]
 
 # pre-process
-fMm.fontname   = newfontM[1]
-fMm.familyname = newfontM[2]
-fMm.fullname   = newfontM[3]
-fMm.weight = "Book"
-fMm.copyright =  "Copyright (c) 2006-2012 Raph Levien (Inconsolata)\n"
-fMm.copyright += "Copyright (c) 2013 itouhiro (Circle M+)\n"
-fMm.copyright += "Copyright (c) 2013 M+ FONTS PROJECT (M+)\n"
-fMm.copyright += "Copyright (c) 2014 MM (Mgen+)\n"
-fMm.copyright += "Copyright (c) 2014 Adobe Systems Incorporated. (NotoSansJP)\n"
-fMm.copyright += "Licenses:\n"
-fMm.copyright += "SIL Open Font License Version 1.1 "
-fMm.copyright += "(http://scripts.sil.org/ofl)\n"
-fMm.copyright += "Apache License, Version 2.0 "
-fMm.copyright += "(http://www.apache.org/licenses/LICENSE-2.0)"
-fMm.version = newfont_version
-fMm.sfntRevision = newfont_sfntRevision
-fMm.sfnt_names = (('English (US)', 'UniqueID', newfontM[2]), )
-#('Japanese', 'PostScriptName', newfontM[2]), 
-#('Japanese', 'Family', newfontM[1]), 
-#('Japanese', 'Fullname', newfontM[3]), 
-
-fMm.hasvmetrics = True
-fMm.head_optimized_for_cleartype = True
-
-fMm.os2_panose = panoseBase
-fMm.os2_vendor = fMg.os2_vendor
-fMm.os2_version = 1
-
-fMm.os2_winascent = newfont_ascent
-fMm.os2_winascent_add = 0
-fMm.os2_windescent = newfont_descent
-fMm.os2_windescent_add = 0
-fMm.os2_typoascent = newfont_ascent
-fMm.os2_typoascent_add = 0
-fMm.os2_typodescent = -newfont_descent
-fMm.os2_typodescent_add = 0
-fMm.os2_typolinegap
-fMm.hhea_ascent = newfont_ascent
-fMm.hhea_ascent_add = 0
-fMm.hhea_descent = -newfont_descent
-fMm.hhea_descent_add = 0
-fMm.hhea_linegap = 0
+setFontProp(fMm, newfontM)
 
 # marge ReplaceParts
 print "marge ReplaceParts"
+# 文字の置換え
 target = (
     0x002a,  # * : astarisk
-    0x0030,  # 0 : zero
     0x006c,  # l : small letter l
     0x2013,  # – : en dash –
     0x2014)  # — : em dash —
-copyAndPaste(fPa, target, fMm, target)
+copyAndPaste(fRp, target, fMm, target)
 
 # marge Mgen+ 1m
 print "marge Mgen+ 1m"
+# マージ
 fMm.mergeFonts( srcfontMgenplus )
 fMm.os2_unicoderanges = fMg.os2_unicoderanges
 fMm.os2_codepages = fMg.os2_codepages
+# ルックアップテーブルの置換え
 for l in fMg.gsub_lookups:
     if (l in fMm.gsub_lookups) == False:
         fMm.importLookups(fMg, l)
@@ -367,55 +422,54 @@ for l in fMm.gsub_lookups:
 
 # marge Migu 1m
 print "marge Migu 1m"
+# 文字の置換え
 target = (
-    # 半濁点（ぱぴぷぺぽパピプペポ の右上の円）を大きくして、濁点と判別しやすく
-    (0x3071, 0x3074, 0x3077, 0x307A, 0x307D, 0x30D1, 0x30D4, 0x30D7, 0x30DA, 0x30DD),
-    # 「カ力 エ工 ロ口 ー一 ニ二」（カタカナ・漢字）の区別
-    (0x30AB, 0x529B, 0x30A8, 0x5DE5, 0x30ED, 0x53E3, 0x30FC, 0x4E00, 0x30CB, 0x4E8C),
-    # ～〜（FULLWIDTH TILDE・WAVE DASH）の区別
-    (0xFF5E, 0x301C),
-    # αβなど一部のギリシャ文字を全角に
+    # JIS X 0208 ひらがな（83字）
+    list(u"ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをん"),
+    # JIS X 0208 カタカナ（86字）
+    list(u"ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ"),
+    # JIS X 0208 仮名又は漢字に準じるもの（10字）
+    list(u"ヽヾゝゞ〃仝々〆〇ー"),
+    # JIS X 0208 和字間隔、記述記号（19字）
+    list(u"　、。，．・：；？！―‐／＼～∥｜…‥"),
+    # JIS X 0208 ダイアクリティカルマーク（8字）
+    list(u"゛゜´｀¨＾￣＿"),
+    # JIS X 0208 括弧記号（22字）
+    list(u"‘’“”（）〔〕［］｛｝〈〉《》「」『』【】"),
+    # JIS X 0208 学術記号（45字）
+    list(u"＋－±×÷＝≠＜＞≦≧∞∴♂♀∈∋⊆⊇⊂⊃∪∩∧∨￢⇒⇔∀∃∠⊥⌒∂∇≡≒≪≫√∽∝∵∫∬"),
+    # JIS X 0208 単位記号（11字）
+    list(u"°′″℃￥＄￠￡％Å‰"),
+    # JIS X 0208 一般記号（32字）
+    list(u"＃＆＊＠§☆★○●◎◇◆□■△▲▽▼※〒→←↑↓〓♯♭♪†‡¶◯"),
+    # JIS X 0208 数字（10字）
+    list(u"０１２３４５６７８９"),
+    # JIS X 0208 ラテン文字（52字）
+    list(u"ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ"),
+    # JIS X 0208 ギリシャ文字（48字）
     list(u"ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψω"),
-    # φЯなど一部のキリル文字を全角に
+    # JIS X 0208 キリル文字（66字）
     list(u"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя"),
-    # ±×÷√‰§†‡¶などの記号を全角に
-    list(u"±×÷√‰§†‡¶´¨‘’“”°′″→←↑↓№∥"),)
+    # JIS X 0213 に登録されているNEC特殊文字記号
+    list(u"①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ㍉㌔㌢㍍㌘㌧㌃㌶㍑㍗㌍㌦㌣㌫㍊㌻㎜㎝㎞㎎㎏㏄㎡〝〟№㏍℡㊤㊥㊦㊧㊨㈱㈲㈹㍻㍾㍽㍼∮∟⊿"),
+    # JIS X 0213 に登録されているIBM拡張文字記号
+    list(u"ⅰⅱⅲⅳⅴⅵⅶⅷⅸⅹ￤＇＂"),
+    # その他(JIS以外)のNEC特殊文字記号
+    list(u"∑"),
+    # UNICODE に含まれる JIS 以外のひらかな・カタカナ
+    list(u"ゔゕゖゟヷヸヹヺヿ゙゚゠"),
+    # JIS X 0201 (ANK) 半角英数字記号 (ASCII文字 0x21-0x7E は除く)
+    list(u"､｡･ｰﾞﾟ｢｣ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝｧｨｩｪｫｬｭｮｯ"),
+    # 半濁点（ぱぴぷぺぽパピプペポ の右上の円）を大きくして、濁点と判別しやすく
+    list(u"ぱぴぷぺぽパピプペポ"), # 上記との重複あり
+    # 「カ力 エ工 ロ口 ー一 ニ二」（カタカナ・漢字）の区別
+    list(u"カ力エ工ロ口ー一ニ二"), # 上記との重複あり
+    # ～〜（FULLWIDTH TILDE・WAVE DASH）の区別
+    list(u"～〜"),) # 上記との重複あり
+    # αβなど一部のギリシャ文字を全角に   : 上記で選択済み
+    # φЯなど一部のキリル文字を全角に     : 上記で選択済み
+    # ±×÷√‰§†‡¶などの記号を全角に : 上記で選択済み
 copyAndPaste(fMi, target, fMm, target)
-
-# modify
-print "modify"
-
-# scaling down
-if scalingDownIfWidth_flag == True:
-    print "While scaling, wait a little..."
-    scalingDownIfWidth(fMm, newfont_em)
-
-# 全角 comma and period ，．
-select(fMm, 0xff0c, 0xff0e)
-fMm.transform(matMove(280, 0))
-fMm.transform(matRescale(512, 0, 1.54, 1.54))
-setWidth(fMm, newfont_em)
-
-# 全角 colon and semicolon ：；
-copyAndPaste    (fMm, 0xff0c, fMm, 0xff1b)
-copyAndPasteInto(fMm, 0xff0e, fMm, 0xff1b, 0, 410)
-copyAndPaste    (fMm, 0xff0e, fMm, 0xff1a)
-copyAndPasteInto(fMm, 0xff0e, fMm, 0xff1a, 0, 410)
-select(fMm, 0xff1b, 0xff1a)
-
-# 全角 brackets （）［］｛｝＜＞
-srcTarget = (0x0028, 0x0029, 0x005b, 0x005d, 0x007b, 0x007d, 0x003c, 0x003e)
-dstTarget = (0xff08, 0xff09, 0xff3b, 0xff3d, 0xff5b, 0xff5d, 0xff1c, 0xff1e)
-copyAndPaste(fMm, srcTarget, fMm, dstTarget)
-fMm.transform(matMove(256, 0))
-setWidth(fMm, newfont_em)
-
-# 拡大/移動したフォントへのヒンティングの再設定
-autoHintAndInstr(fMm, list(u"\"'`,.:;+-<>=~()[]{}!?"))
-
-# ひらがな/カタカナへのヒンティングの設定
-#autoHintAndInstr(fMm, rng(0x3041, 0x31FF))
-autoHintAndInstr(fMm, list(u"うおかがこごただてでとどねぱぴぷぺぽむらりるゔイウギザジタダヅテデナパピプペホポミラリヮワヲヷヺ゙゚゛゜"))
 
 # post-process
 fMm.selection.all()
@@ -425,8 +479,44 @@ fMm.round()
 print "Generate " + newfontM[0]
 fMm.generate(newfontM[0], '', generate_flags)
 
+# marge HinthingParts
+if os.path.exists( srcfontHintingParts ) == True:
+    print "marge HintingParts"
+    shutil.copyfile(newfontM[0], "../../MyricaSourceTTF/MyricaM_NoHint.ttf")
+    fHp = fontforge.open( srcfontHintingParts )
+
+    #property
+    setFontProp(fHp, newfontM)
+
+    # modify em
+    fHp.em  = newfont_em
+    fHp.ascent  = newfont_ascent
+    fHp.descent = newfont_descent
+
+    # delete
+    for glyph in fHp.glyphs():
+        if glyph.unicode <= 0:
+            select(fHp, glyph.glyphname)
+            fHp.clear()
+
+    # marge
+    fHp.mergeFonts( newfontM[0] )
+    fHp.os2_unicoderanges = fMm.os2_unicoderanges
+    fHp.os2_codepages = fMm.os2_codepages
+    # ルックアップテーブルの置換え
+    for l in fMm.gsub_lookups:
+        if (l in fHp.gsub_lookups) == False:
+            fHp.importLookups(fMm, l)
+    for l in fHp.gsub_lookups:
+        if l.startswith(fMm.fontname + "-") == True:
+            fHp.removeLookup(l)
+
+    # generate
+    print "Generate " + newfontM[0] + " with Hinting"
+    fHp.generate(newfontM[0], '', generate_flags)
+
 fMm.close()
-fPa.close()
+fRp.close()
 fMg.close()
 fMi.close()
 
