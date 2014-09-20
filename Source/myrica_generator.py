@@ -23,7 +23,7 @@
 #
 
 # version
-newfont_version      = "1.008.20140915"
+newfont_version      = "1.009.20140920"
 newfont_sfntRevision = 0x00010000
 
 # flag
@@ -38,6 +38,15 @@ newfontN  = ("../../MyricaSourceTTF/MyricaN.ttf", "MyricaN", "Myrica N", "Myrica
 newfont_ascent  = 840
 newfont_descent = 184
 newfont_em = newfont_ascent + newfont_descent
+
+newfont_winAscent   = 840
+newfont_winDescent  = 170
+newfont_typoAscent  = newfont_winAscent
+newfont_typoDescent = -newfont_winDescent
+newfont_typoLinegap = 0
+newfont_hheaAscent  = newfont_winAscent
+newfont_hheaDescent = -newfont_winDescent
+newfont_hheaLinegap = 0
 
 # source file
 srcfontIncosolata   = "../../MyricaSourceTTF/Inconsolata-Regular.ttf"
@@ -233,20 +242,20 @@ def setFontProp(font, fontInfo):
     font.os2_vendor = "M+"
     font.os2_version = 1
 
-    font.os2_winascent = newfont_ascent
-    font.os2_winascent_add = 0
-    font.os2_windescent = newfont_descent
-    font.os2_windescent_add = 0
-    font.os2_typoascent = newfont_ascent
-    font.os2_typoascent_add = 0
-    font.os2_typodescent = -newfont_descent
+    font.os2_winascent       = newfont_winAscent
+    font.os2_winascent_add   = 0
+    font.os2_windescent      = newfont_winDescent
+    font.os2_windescent_add  = 0
+    font.os2_typoascent      = newfont_typoAscent
+    font.os2_typoascent_add  = 0
+    font.os2_typodescent     = -newfont_typoDescent
     font.os2_typodescent_add = 0
-    font.os2_typolinegap
-    font.hhea_ascent = newfont_ascent
-    font.hhea_ascent_add = 0
-    font.hhea_descent = -newfont_descent
-    font.hhea_descent_add = 0
-    font.hhea_linegap = 0
+    font.os2_typolinegap     = newfont_typoLinegap
+    font.hhea_ascent         = newfont_hheaAscent
+    font.hhea_ascent_add     = 0
+    font.hhea_descent        = -newfont_hheaDescent
+    font.hhea_descent_add    = 0
+    font.hhea_linegap        = newfont_hheaLinegap
 
 
 ########################################
