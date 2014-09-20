@@ -1,5 +1,5 @@
 # プログラミング用フォント Myrica  
-Version 1.008.20140915  
+Version 1.009.20140920  
   
   
 Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォントです。  
@@ -165,9 +165,14 @@ https://github.com/yascentur/Ricty
   
 ## 改版履歴  
   
+#### Version 1.009.20140920  
+  
+・ASCII文字以外のヒンティングを12ポイントで見やすいように見直し  
+　　ASCII文字は Inconsolata のヒンティング情報を継承  
+  
 #### Version 1.008.20140915  
   
-・漢字とASCII文字を除く JIS0208 / JIS0213 の文字に、ヒンティング情報を付加  
+・ひらがな・カタカナ と一部の漢字に、ヒンティング情報を付加  
 　　ASCII文字は Inconsolata のヒンティング情報を継承  
   
 #### Version 1.007.20140910  
