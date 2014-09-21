@@ -7,7 +7,7 @@
 # This script is for generating ``myrica'' font
 #
 # * Inconsolata : Inconsolata-Regular.ttf : 1.013 (Google Fonts)
-# * (original)  : ReplaceParts.ttf        : 1.005.20140905
+# * (original)  : ReplaceParts.ttf        : 1.010.20140921
 # * Mgen+       : mgenplus-1m-regular.ttf : 1.058.20140808 (20140828)
 # * Migu        : migu-1m-regular.ttf     : 2013.0617 (20130617)
 #
@@ -23,7 +23,7 @@
 #
 
 # version
-newfont_version      = "1.009.20140920"
+newfont_version      = "1.010.20140921"
 newfont_sfntRevision = 0x00010000
 
 # flag
@@ -493,6 +493,22 @@ if os.path.exists( srcfontHintingParts ) == True:
     print "marge HintingParts"
     shutil.copyfile(newfontM[0], "../../MyricaSourceTTF/MyricaM_NoHint.ttf")
     fHp = fontforge.open( srcfontHintingParts )
+
+    # output list
+    f = open('HintingPartsList.txt', 'w')
+    for glyph in fHp:
+        if fHp[glyph].unicode >= 0:
+            s = unichr(fHp[glyph].unicode) + u"\tcode:" + hex(fHp[glyph].unicode) + u"\tname:" + fHp[glyph].glyphname
+        else:
+            s = u"\tcode:" + hex(fHp[glyph].unicode) + u"\tname:" + fHp[glyph].glyphname
+        if fHp[glyph].ttinstrs != "":
+            s = s + "\thintint:yes"
+        else:
+            s = s + "\thintint:no"
+        #print s
+        s = s + '\n'
+        f.write(s.encode("utf-8"))
+    f.close()
 
     #property
     setFontProp(fHp, newfontM)
