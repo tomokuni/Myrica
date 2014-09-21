@@ -410,13 +410,13 @@ z	code:0x7a	name:z	hintint:yes
 ね	code:0x306d	name:uni306D	hintint:yes
 の	code:0x306e	name:uni306E	hintint:yes
 は	code:0x306f	name:uni306F	hintint:yes
-ば	code:0x3070	name:uni3070	hintint:no
+ば	code:0x3070	name:uni3070	hintint:yes
 ぱ	code:0x3071	name:uni3071	hintint:yes
 ひ	code:0x3072	name:uni3072	hintint:yes
 び	code:0x3073	name:uni3073	hintint:yes
 ぴ	code:0x3074	name:uni3074	hintint:yes
 ふ	code:0x3075	name:uni3075	hintint:yes
-ぶ	code:0x3076	name:uni3076	hintint:no
+ぶ	code:0x3076	name:uni3076	hintint:yes
 ぷ	code:0x3077	name:uni3077	hintint:yes
 へ	code:0x3078	name:uni3078	hintint:yes
 べ	code:0x3079	name:uni3079	hintint:yes
@@ -430,7 +430,7 @@ z	code:0x7a	name:z	hintint:yes
 め	code:0x3081	name:uni3081	hintint:yes
 も	code:0x3082	name:uni3082	hintint:yes
 ゃ	code:0x3083	name:uni3083	hintint:yes
-や	code:0x3084	name:uni3084	hintint:no
+や	code:0x3084	name:uni3084	hintint:yes
 ゅ	code:0x3085	name:uni3085	hintint:yes
 ゆ	code:0x3086	name:uni3086	hintint:yes
 ょ	code:0x3087	name:uni3087	hintint:yes
@@ -609,7 +609,7 @@ z	code:0x7a	name:z	hintint:yes
 －	code:0xff0d	name:uniFF0D	hintint:yes
 ．	code:0xff0e	name:uniFF0E	hintint:yes
 ／	code:0xff0f	name:uniFF0F	hintint:yes
-０	code:0xff10	name:uniFF10	hintint:no
+０	code:0xff10	name:uniFF10	hintint:yes
 １	code:0xff11	name:uniFF11	hintint:yes
 ２	code:0xff12	name:uniFF12	hintint:yes
 ３	code:0xff13	name:uniFF13	hintint:yes
@@ -715,13 +715,13 @@ z	code:0x7a	name:z	hintint:yes
 ｹ	code:0xff79	name:uniFF79	hintint:yes
 ｺ	code:0xff7a	name:uniFF7A	hintint:yes
 ｻ	code:0xff7b	name:uniFF7B	hintint:yes
-ｼ	code:0xff7c	name:uniFF7C	hintint:no
+ｼ	code:0xff7c	name:uniFF7C	hintint:yes
 ｽ	code:0xff7d	name:uniFF7D	hintint:yes
 ｾ	code:0xff7e	name:uniFF7E	hintint:yes
 ｿ	code:0xff7f	name:uniFF7F	hintint:yes
 ﾀ	code:0xff80	name:uniFF80	hintint:yes
 ﾁ	code:0xff81	name:uniFF81	hintint:yes
-ﾂ	code:0xff82	name:uniFF82	hintint:no
+ﾂ	code:0xff82	name:uniFF82	hintint:yes
 ﾃ	code:0xff83	name:uniFF83	hintint:yes
 ﾄ	code:0xff84	name:uniFF84	hintint:yes
 ﾅ	code:0xff85	name:uniFF85	hintint:yes
@@ -757,3 +757,4 @@ z	code:0x7a	name:z	hintint:yes
 ￣	code:0xffe3	name:uniFFE3	hintint:yes
 ￤	code:0xffe4	name:uniFFE4	hintint:yes
 ￥	code:0xffe5	name:uniFFE5	hintint:yes
+	code:-0x1	name:NULL	hintint:no
