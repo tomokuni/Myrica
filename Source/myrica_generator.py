@@ -23,7 +23,7 @@
 #
 
 # version
-newfont_version      = "1.010.20140921"
+newfont_version      = "1.011.20140924"
 newfont_sfntRevision = 0x00010000
 
 # flag
@@ -150,11 +150,14 @@ def copyAndPasteInto(srcFont, srcCodes, dstFont, dstCodes, pos_x, pos_y):
     dstFont.pasteInto()
     dstFont.transform(matMove(pos_x, pos_y))
 
-def scalingDownIfWidth(font, if_width):
+def scalingDownIfWidth(font, if_width, scaleX, scaleY):
     for glyph in font.glyphs():
-        if glyph.width == if_width:
-            glyph.transform(matRescale(if_width / 2, 0, 0.91, 0.91))
-            glyph.width = if_width
+        width = glyph.width
+        glyph.transform(matRescale(width / 2, 0, scaleX, scaleY))
+        glyph.width = width
+#        if glyph.width == if_width:
+#            glyph.transform(matRescale(if_width / 2, 0, scale, scale))
+#            glyph.width = if_width
 
 def centerInWidth(font):
     for glyph in font.selection.byGlyphs:
@@ -360,7 +363,7 @@ print "modify"
 # scaling down
 if scalingDownIfWidth_flag == True:
     print "While scaling, wait a little..."
-    scalingDownIfWidth(fMg, newfont_em)
+    scalingDownIfWidth(fMg, newfont_em, 0.91, 0.86) #0.91
 
 #fMg.generate("/modMgenplus.ttf", '', generate_flags)
 
@@ -390,7 +393,7 @@ centerInWidth(fMi)
 # scaling down
 if scalingDownIfWidth_flag == True:
     print "While scaling, wait a little..."
-    scalingDownIfWidth(fMi, newfont_em)
+    scalingDownIfWidth(fMi, newfont_em, 0.91, 0.86) #0.91
 
 #fMi.generate("/modMigu.ttf", '', generate_flags)
 
@@ -566,7 +569,7 @@ fMp.os2_panose = tuple(panose)
 print "modify"
 
 # 半角
-hankaku = (100,)
+hankaku = (70,)
 # 全角
 zenkaku = (50,)
 
@@ -585,6 +588,14 @@ for glyph in fMp.selection.byGlyphs:
 # 半角数字は幅固定で中央配置
 select(fMp, rng(0x0030,0x0039))   # 0-9
 setWidth(fMp, 490)
+centerInWidth(fMp)
+
+# スペース
+select(fMp, 0x0020)   # 半角スペース
+setWidth(fMp, 340)
+centerInWidth(fMp)
+select(fMp, 0x3000)   # 全角スペース
+setWidth(fMp, 680)
 centerInWidth(fMp)
 
 # post-process
@@ -650,6 +661,14 @@ for glyph in fMn.selection.byGlyphs:
 
 # 半角数字は幅固定で中央配置
 select(fMn, rng(0x0030,0x0039))   # 0-9
+setWidth(fMn, 400)
+centerInWidth(fMn)
+
+# スペース
+select(fMn, 0x0020)   # 半角スペース
+setWidth(fMn, 200)
+centerInWidth(fMn)
+select(fMn, 0x3000)   # 全角スペース
 setWidth(fMn, 400)
 centerInWidth(fMn)
 
