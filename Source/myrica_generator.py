@@ -7,7 +7,8 @@
 # This script is for generating ``myrica'' font
 #
 # * Inconsolata : Inconsolata-Regular.ttf : 1.013 (Google Fonts)
-# * (original)  : ReplaceParts.ttf        : 1.010.20140921
+# * (original)  : ReplaceParts.ttf        : 1.006.20141102
+# * (original)  : HintingParts.ttf        : 1.012.20141102
 # * Mgen+       : mgenplus-1m-regular.ttf : 1.058.20140808 (20140828)
 # * Migu        : migu-1m-regular.ttf     : 2013.0617 (20130617)
 #
@@ -23,7 +24,7 @@
 #
 
 # version
-newfont_version      = "1.011.20140924"
+newfont_version      = "1.012.20141102"
 newfont_sfntRevision = 0x00010000
 
 # flag
@@ -281,26 +282,14 @@ select(fIn, 0x002c, 0x002e, 0x003a, 0x003b)
 fIn.transform(matRescale(250, 0, 1.15, 1.15))
 setWidth(fIn, 1000 / 2)
 
-# 移動 +-<>=
-select(fIn, 0x002b, 0x002d, 0x003c, 0x003e, 0x003d)
+# 移動 +-=
+select(fIn, 0x002b, 0x002d, 0x003d)
 fIn.transform(matMove(0, -80))
 setWidth(fIn, 1000 / 2)
 
 # 移動 ~
 select(fIn, 0x007e)
 fIn.transform(matMove(0, 120))
-
-# 移動 ()
-select(fIn, 0x0028, 0x0029)
-fIn.transform(matMove(0, 78))
-
-# 移動 []
-select(fIn, 0x005b, 0x005d)
-fIn.transform(matMove(0, 44))
-
-# 移動 {}
-select(fIn, 0x007b, 0x007d)
-fIn.transform(matMove(0, 99))
 
 # | -> broken | (Inconsolata's glyph)
 copyAndPaste(fIn, 0x00a6, fIn, 0x007c)
@@ -415,7 +404,15 @@ target = (
     0x002a,  # * : astarisk
     0x006c,  # l : small letter l
     0x2013,  # – : en dash –
-    0x2014)  # — : em dash —
+    0x2014,  # — : em dash —
+    0x0028,  # ( : paren left (
+    0x0029,  # ) : paren right )
+    0x003c,  # < : less <
+    0x003e,  # > : grater >
+    0x005b,  # [ : bracket left [
+    0x005d,  # ] : bracket right ]
+    0x007b,  # { : brace left {
+    0x007d)  # } : brace right }
 copyAndPaste(fRp, target, fMm, target)
 
 # marge Mgen+ 1m

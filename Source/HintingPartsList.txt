@@ -383,3 +383,5 @@ z	code:0x7a	name:z	hintint:yes
 ﾝ	code:0xff9d	name:uniFF9D	hintint:yes
 ﾞ	code:0xff9e	name:uniFF9E	hintint:yes
 ﾟ	code:0xff9f	name:uniFF9F	hintint:no
+	code:-0x1	name:_1	hintint:no
+	code:-0x1	name:NULL	hintint:no
