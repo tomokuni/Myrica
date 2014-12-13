@@ -31,9 +31,9 @@ newfont_sfntRevision = 0x00010000
 scalingDownIfWidth_flag = True
 
 # set font name
-newfontM  = ("../../MyricaSourceTTF/MyricaM.ttf", "MyricaM", "Myrica M", "Myrica Monospace")
-newfontP  = ("../../MyricaSourceTTF/MyricaP.ttf", "MyricaP", "Myrica P", "Myrica Proportional")
-newfontN  = ("../../MyricaSourceTTF/MyricaN.ttf", "MyricaN", "Myrica N", "Myrica Narrow")
+newfontM  = ("../SourceTTF/MyricaM.ttf", "MyricaM", "Myrica M", "Myrica Monospace")
+newfontP  = ("../SourceTTF/MyricaP.ttf", "MyricaP", "Myrica P", "Myrica Proportional")
+newfontN  = ("../SourceTTF/MyricaN.ttf", "MyricaN", "Myrica N", "Myrica Narrow")
 
 # set ascent and descent (line width parameters)
 newfont_ascent  = 840
@@ -50,9 +50,9 @@ newfont_hheaDescent = -newfont_winDescent
 newfont_hheaLinegap = 0
 
 # source file
-srcfontIncosolata   = "../../MyricaSourceTTF/Inconsolata-Regular.ttf"
-srcfontMgenplus     = "../../MyricaSourceTTF/mgenplus-1m-regular.ttf"
-srcfontMigu         = "../../MyricaSourceTTF/migu-1m-regular.ttf"
+srcfontIncosolata   = "../SourceTTF/Inconsolata-Regular.ttf"
+srcfontMgenplus     = "../SourceTTF/mgenplus-1m-regular.ttf"
+srcfontMigu         = "../SourceTTF/migu-1m-regular.ttf"
 srcfontReplaceParts = "ReplaceParts.ttf"
 srcfontHintingParts = "HintingParts.ttf"
 
@@ -491,7 +491,7 @@ fMm.generate(newfontM[0], '', generate_flags)
 # marge HinthingParts
 if os.path.exists( srcfontHintingParts ) == True:
     print "marge HintingParts"
-    shutil.copyfile(newfontM[0], "../../MyricaSourceTTF/MyricaM_NoHint.ttf")
+    shutil.copyfile(newfontM[0], "../SourceTTF/MyricaM_NoHint.ttf")
     fHp = fontforge.open( srcfontHintingParts )
 
     # output list
