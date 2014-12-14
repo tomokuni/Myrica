@@ -349,11 +349,6 @@ fMg.descent = newfont_descent
 # modify
 print "modify"
 
-# scaling down
-if scalingDownIfWidth_flag == True:
-    print "While scaling, wait a little..."
-    scalingDownIfWidth(fMg, newfont_em, 0.91, 0.86) #0.91
-
 #fMg.generate("/modMgenplus.ttf", '', generate_flags)
 
 ########################################
@@ -378,11 +373,6 @@ dstTarget = (0xff08, 0xff09, 0xff3b, 0xff3d, 0xff5b, 0xff5d, 0xff1c, 0xff1e)
 copyAndPaste(fMi, srcTarget, fMi, dstTarget)
 setWidth(fMi, newfont_em)
 centerInWidth(fMi)
-
-# scaling down
-if scalingDownIfWidth_flag == True:
-    print "While scaling, wait a little..."
-    scalingDownIfWidth(fMi, newfont_em, 0.91, 0.86) #0.91
 
 #fMi.generate("/modMigu.ttf", '', generate_flags)
 
@@ -414,6 +404,13 @@ target = (
     0x007b,  # { : brace left {
     0x007d)  # } : brace right }
 copyAndPaste(fRp, target, fMm, target)
+
+# scaling down
+if scalingDownIfWidth_flag == True:
+    print "While scaling, wait a little..."
+    #0.91はRictyに準じた。0.86は全角数字を半角数字の高さに合わせるために調整
+    scalingDownIfWidth(fMg, newfont_em, 0.91, 0.86)
+    scalingDownIfWidth(fMi, newfont_em, 0.91, 0.86)
 
 # marge Mgen+ 1m
 print "marge Mgen+ 1m"
