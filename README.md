@@ -1,5 +1,6 @@
 # プログラミング用フォント Myrica  
-Version 1.012.20141102  
+Version 2.001.20141221  
+フォントファイルだけが必要な場合は、Myrica.7z ファイルを取得してください。
   
   
 Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォントです。  
@@ -8,17 +9,17 @@ Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォ
   
 ## フォントの特徴  
 多くの特徴をプログラミング用フォント Ricty から継承しています。  
-*ラテン文字には「Inconsolata」が適用されます。  
-*それ以外の文字には「Mgen+」または「Migu 1M」が適用されます。美しい M+ と視認性の高い日本語文字 (半濁音など) が使用できます。  
+*ASCII文字は「Inconsolata」が適用されます。  
+*それ以外の文字には「源柔ゴシック」が適用されます。  
 *半角文字と全角文字の横幅の比が 1:2 に調整されています。  
-
+*視認性の高い日本語文字 (半濁音など) が使用できます。  
+  
 Rictyにない特徴  
 *ASCII文字はヒンティング付きの Inconsolata から、ヒンティング情報を継承していますので、Windowsでもクッキリしています。  
-*ひらがな・カタカナ と一部の記号に、ヒンティング情報を付加しましたので、Windowsでもクッキリしています。  
   
   
 ## フォントイメージ  
-![Font Image](/Source/FontImageChrome.png)
+![Font Image](/Source/FontImage.png)
   
   
 ## フォント構成  
@@ -55,9 +56,8 @@ Ricty はとても素晴らしいフォントですが、幾つかの不満点�
   
 これらに関して、以下のように解決したのが、本フォント Myrica です。  
 ・ヒンティング付きの Inconsolata を使用し、ヒンティングを消さないように合成した。  
-・ひらがな・カタカナと一部の記号にヒンティングを付加した。(それ以外の漢字等はヒンティングはありません)  
-・M+ OUTLINE FONTS 以外のフォントを IPA から 源ノ角ゴシック に変更して再配布可能とした。  
 ・アスタリスク(*) を含む幾つかを好みのオリジナルな字形に変更した。  
+・ASCII文字以外は 源柔ゴシック を元に合成した。  
   
   
 ## グリフの構成  
@@ -72,34 +72,28 @@ Ricty はとても素晴らしいフォントですが、幾つかの不満点�
 ※Inconsolata: 「Top 10 Programming Fonts」や「プログラミング時に最適なフォント『Inconsolata』」などで高い評価を受けているサンセリフ体等幅欧文フォント  
   
   
-(2)ASCII文字以外は「Mgen+」をベースとしました。  
-※Mgen+: 「M+ OUTLINE FONTS」と「源ノ角ゴシック」をベースとして作成された日本語フォント  
+(2)ASCII文字以外は「源柔ゴシック」をベースとしました。  
+※源柔ゴシック: 「源ノ角ゴシック」をベースとして作成された丸ゴシック化した日本語フォント  
   
   
-さらに、一部の文字は他の文字に置き換えています。  
-(3)「Migu」由来の文字への置換え。  
-※Migu: 「M+ OUTLINE FONTS」をベースに改良された視認性の高い日本語文字を含むフォント  
-  ・半濁点（ぱぴぷぺぽパピプペポ の右上の円）を大きくして、濁点と判別しやすく。  
-  ・「カ力 エ工 ロ口 ー一 ニ二」（カタカナ・漢字）の区別。  
-  ・ ～〜（FULLWIDTH TILDE・WAVE DASH）の区別。  
-  ・αβなど一部のギリシャ文字を全角に。  
-  ・φЯなど一部のキリル文字を全角に。  
-  ・±×÷√‰§†‡¶などの記号を全角に。  
-  
-  
-(4)「オリジナル」な文字への置換え  
+一部の文字を改変しています。  
+(3)「オリジナル」な文字への置換え  
   ・0x002a   * : astarisk  
   ・0x006c   l : small letter l  
   ・0x2013   – : en dash –  
   ・0x2014   — : em dash —  
+  ・半濁点（ぱぴぷぺぽパピプペポ の右上の円）を大きくして、濁点と判別しやすく。  
+  ・「カ力 エ工 ロ口 ー一 ニ二」（カタカナ・漢字）の区別。  
+  ・ ～〜（FULLWIDTH TILDE・WAVE DASH）の区別。  
+  ※半濁点 や カタカナ・漢字、 FULLWIDTH TILDE・WAVE DASH の区別は、Miguフォント を参考にさせて頂きました。
   
   
 ## ライセンスと著作権について  
 「SIL OPEN FONT LICENSE Version 1.1」と「Apache 2.0 License」のデュアルライセンスです。
   
 ・ASCII文字は、Inconsolata と同じ SIL OPEN FONT LICENSE Version 1.1 のもとで使用することができます。  
-・ASCII文字以外 は、Megn+ と同じ Apache 2.0 License のもとで使用することができます。  
-・ただし、使用や埋め込み・改変を行った結果、使用したのが M+ OUTLINE FONTS 由来の文字グリフのみだった場合は、より要件が少ない M+ FONT LICENSE を適用することができます。  
+・ASCII文字以外 は、源柔ゴシック と同じ Apache 2.0 License のもとで使用することができます。  
+・源柔ゴシック の一部に M+ OUTLINE FONTS 由来の文字グリフが含まれています。  
   
 SIL OPEN FONT LICENSE Version 1.1 の内容は、アーカイブに同梱の LICENSE_OFL.txt に記載されています。  
 この日本語訳は、以下から参照することができます。  
@@ -112,25 +106,14 @@ http://sourceforge.jp/projects/opensource/wiki/licenses%2FApache_License_2.0
 M+ OUTLINE FONTS のグリフは、同梱のファイル LICENSE_M+.txt に記載された自由なM+ FONTS LICENSE に基づき使用しています  
   
   
-・Myrica は、M+ OUTLINE FONTS にないグリフを源ノ角ゴシックで補い、ASCII文字をInconsolataで置換えたフォントです。  
-・フォントデータに含まれる、源ノ角ゴシック由来の文字グリフの著作権は Adobe が所有しています。  
-・フォントデータに含まれる、M+ OUTLINE FONTS 由来の文字グリフの著作権は M+ FONTS PROJECT が所有しています。  
+・Myrica は、Inconsolata と 源柔ゴシック を合成したフォントです。  
 ・フォントデータに含まれる、Inconsolata 由来の文字グリフの著作権は Raph Levien, Cyreal が所有しています。  
-  
-  
-## M+ 由来の文字について  
----- Mgen+ の README より抜粋 ----  
-> このバージョンでは、M+ OUTLINE FONTS 2014 年 8 月 3 日時点での CVS 版をベースとしています。  
-> TESTFLIGHT-058 の漢字に加え、新たに制作された以下の漢字を含んでいます。  
->  
-> 瘴嬲嫐娶夥埒嚼嚥臙讌叭釟冪匍匐僥潛僭譖獰湜懿點鈞繼爀璇騫勳粱岺岑邙玟泮悳乭儺攤柰  
-> 璨娜拏贊讚鑽瓚盡儘燼贐賣囮皺鄒猜睛蜻闢  
->  
-> M+ 由来の漢字グリフは 4,859 字がこのフォントに収録されており、それ以外の漢字は源ノ角ゴシックがベースとなっています。  
+・フォントデータに含まれる、源ノ角ゴシック由来の文字グリフの著作権は Adobe が所有しています。  
+・源ノ角ゴシックに含まれる、M+ OUTLINE FONTS 由来の文字グリフの著作権は M+ FONTS PROJECT が所有しています。  
   
   
 ## 名前の由来  
-・Mgen+ 作者の MM氏  
+・源柔ゴシック 作者の MM氏  
 ・Ricty 作者の Yusa 氏  
 ・Inconsolata 作者の Raph Levien 氏  
 ・Migu 作者の itouhiro 氏  
@@ -147,8 +130,8 @@ Myrica は、以下のフォントを直接または間接的に合成、参照�
 M+ OUTLINE FONTS  
 http://mplus-fonts.sourceforge.jp/  
   
-Mgen+  
-http://jikasei.me/font/mgenplus/  
+源柔ゴシック  
+http://jikasei.me/font/genjyuu/  
   
 源ノ角ゴシック (Source Hans Sans)  
 http://store1.adobe.com/cfusion/store/html/index.cfm?store=OLS-JP&event=displayFontPackage&code=1967  
@@ -164,6 +147,10 @@ https://github.com/yascentur/Ricty
   
   
 ## 改版履歴  
+  
+#### Version 2.001.20141221  
+  
+・日本語フォントのベースを源柔ゴシックに変更  
   
 #### Version 1.012.20141102  
   
