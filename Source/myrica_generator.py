@@ -9,7 +9,7 @@
 # * Inconsolata  : Inconsolata-Regular.ttf            : 1.013 (Google Fonts)
 # * 源柔ゴシック : GenJyuuGothic-Monospace-Light.ttf  : 1.058.20140828
 # * (original)   : ReplaceParts.ttf                   : 1.006.20141102
-# * (original)   : HintingParts.ttf                   : 2.001.20141222
+# * (original)   : HintingParts.ttf                   : 2.001.20141221
 #
 # 以下のように構成されます。
 # ・英数字記号は、Inconsolata
