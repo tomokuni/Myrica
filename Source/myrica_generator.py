@@ -274,7 +274,6 @@ charZKKana = list(u"ァアィイゥウェエォオカガキギクグケゲコゴ
 charHKKana = list(u"､｡･ｰﾞﾟ｢｣ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝｧｨｩｪｫｬｭｮｯ")
 charZEisu = list(u"０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ")
 
-
 ########################################
 # modified Inconsolata
 ########################################
@@ -412,11 +411,14 @@ fMm.os2_unicoderanges = fGj.os2_unicoderanges
 fMm.os2_codepages = fGj.os2_codepages
 # ルックアップテーブルの置換え
 for l in fGj.gsub_lookups:
-    if (l in fMm.gsub_lookups) == False:
-        fMm.importLookups(fGj, l)
+    fMm.importLookups(fGj, l)
 for l in fMm.gsub_lookups:
     if l.startswith(fGj.fontname + "-") == True:
         fMm.removeLookup(l)
+#for l in fMm.gpos_lookups:
+#    fMm.removeLookup(l)
+#for l in fGj.gpos_lookups:
+#   fMm.importLookups(fGj, l)
 
 # post-process
 fMm.selection.all()
@@ -452,17 +454,14 @@ if os.path.exists( srcfontHintingParts ) == True:
     fHp.os2_codepages = fMm.os2_codepages
     # ルックアップテーブルの置換え
     for l in fMm.gsub_lookups:
-        if (l in fHp.gsub_lookups) == False:
-            fHp.importLookups(fMm, l)
+        fHp.importLookups(fMm, l)
     for l in fHp.gsub_lookups:
         if l.startswith(fMm.fontname + "-") == True:
             fHp.removeLookup(l)
-#    for l in fMm.gpos_lookups:
-#        if (l in fHp.gsub_lookups) == False:
-#           fHp.importLookups(fMm, l)
 #    for l in fHp.gpos_lookups:
-#        if l.startswith(fMm.fontname + "-") == True:
-#            fHp.removeLookup(l)
+#        fHp.removeLookup(l)
+#    for l in fMm.gpos_lookups:
+#       fHp.importLookups(fMm, l)
 
     # post-process
     fHp.selection.all()
@@ -554,17 +553,17 @@ fMn.os2_panose = tuple(panose)
 print "modify"
 
 # 半角英数
-heisu = (0.85, 1.00, 50, (rng(0x0030,0x0039), rng(0x0041,0x005A), rng(0x0061,0x007A)))
+heisu = (0.68, 1.00, 50, (rng(0x0030,0x0039), rng(0x0041,0x005A), rng(0x0061,0x007A)))
 # 半角記号
-hkigo = (0.85, 1.00, 50, (rng(0x0021,0x002F), rng(0x003A,0x0040), rng(0x005B,0x0060), rng(0x007B,0x007E)))
+hkigo = (0.68, 1.00, 50, (rng(0x0021,0x002F), rng(0x003A,0x0040), rng(0x005B,0x0060), rng(0x007B,0x007E)))
 # 全角かな
-zkana = (0.50, 1.00, 50, rng(0x3041,0x31FF))
+zkana = (0.55, 1.00, 50, rng(0x3041,0x31FF))
 # 半角かな
-hkana = (0.85, 1.00, 50, rng(0xFF66,0xFF9F))
+hkana = (0.68, 1.00, 50, rng(0xFF66,0xFF9F))
 # その他の全角文字
 zetc  = (0.60, 1.00, 50)
 # その他の半角文字
-hetc  = (0.85, 1.00, 50)
+hetc  = (0.68, 1.00, 50)
 
 # 拡大縮小 と 幅の自動設定
 fMn.selection.all()
@@ -586,15 +585,15 @@ for glyph in fMn.selection.byGlyphs:
 
 # 半角数字は幅固定で中央配置
 select(fMn, rng(0x0030,0x0039))   # 0-9
-setWidth(fMn, 400)
+setWidth(fMn, 350)
 centerInWidth(fMn)
 
 # スペース
 select(fMn, 0x0020)   # 半角スペース
-setWidth(fMn, 200)
+setWidth(fMn, 350)
 centerInWidth(fMn)
 select(fMn, 0x3000)   # 全角スペース
-setWidth(fMn, 400)
+setWidth(fMn, 500)
 centerInWidth(fMn)
 
 # post-process
