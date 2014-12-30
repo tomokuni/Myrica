@@ -7,20 +7,20 @@
 # This script is for generating ``myrica'' font
 #
 # * Inconsolata  : Inconsolata-Regular.ttf            : 1.013 (Google Fonts)
-# * 源柔ゴシック : GenJyuuGothic-Monospace-Light.ttf  : 1.058.20140828
+# * 源真ゴシック : GenShinGothic-Monospace-Light.ttf  : 1.058.20140828
 # * (original)   : ReplaceParts.ttf                   : 1.006.20141102
-# * (original)   : HintingParts.ttf                   : 1.013.20141221
+# * (original)   : HintingParts.ttf                   : 2.001.20141221
 #
 # 以下のように構成されます。
 # ・英数字記号は、Inconsolata
-# ・他の文字は、源柔ゴシック
-# ・一部の文字を視認性向上のため、源柔ゴシックをベースに migu の特徴を取込み
+# ・他の文字は、源真ゴシック
+# ・一部の文字を視認性向上のため、源真ゴシックをベースに migu の特徴を取込み
 #     半濁点（ぱぴぷぺぽパピプペポ の右上の円）を大きくして、濁点と判別しやすく
 #     「カ力 エ工 ロ口 ー一 ニ二」（カタカナ・漢字）の区別
 #     ～〜（FULLWIDTH TILDE・WAVE DASH）の区別
 
 # version
-newfont_version      = "2.001.20141221"
+newfont_version      = "2.002.20141230"
 newfont_sfntRevision = 0x00010000
 
 # set font name
@@ -30,9 +30,12 @@ newfontN  = ("../Work/MyricaN.ttf", "MyricaN", "Myrica N", "Myrica Narrow")
 
 # source file
 srcfontIncosolata   = "../SourceTTF/Inconsolata-Regular.ttf"
-srcfontGenJyuu      = "../SourceTTF/GenJyuuGothic-Monospace-Light.ttf"
+srcfontGenShin      = "../SourceTTF/GenShinGothic-Monospace-Light-ExpandH20.ttf"
 srcfontReplaceParts = "ReplaceParts.ttf"
 srcfontHintingParts = "HintingParts.ttf"
+
+# out file
+outfontNoHint = "../Work/MyricaM_NoHint.ttf"
 
 # flag
 scalingDownIfWidth_flag = True
@@ -89,8 +92,8 @@ if os.path.exists( srcfontIncosolata ) == False:
 if os.path.exists( srcfontReplaceParts ) == False:
     print "Error: " + srcfontReplaceParts + " not found"
     sys.exit( 1 )
-if os.path.exists( srcfontGenJyuu ) == False:
-    print "Error: " + srcfontGenJyuu + " not found"
+if os.path.exists( srcfontGenShin ) == False:
+    print "Error: " + srcfontGenShin + " not found"
     sys.exit( 1 )
 
 ########################################
@@ -128,6 +131,14 @@ def selectMore(font, *codes):
             font.selection.select(("more",), ord(c))
         else:
             font.selection.select(("more",), c)
+
+def selectLess(font, *codes):
+    flat = flatten(codes)
+    for c in flat:
+        if isinstance(c, (unicode, )):
+            font.selection.select(("less",), ord(c))
+        else:
+            font.selection.select(("less",), c)
 
 def selectExistAll(font):
     font.selection.none()
@@ -257,6 +268,11 @@ def setFontProp(font, fontInfo):
     font.hhea_descent_add    = 0
     font.hhea_linegap        = newfont_hheaLinegap
 
+charASCII  = rng(0x0021, 0x007E)
+charZHKana = list(u"ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをん"),
+charZKKana = list(u"ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ"),
+charHKKana = list(u"､｡･ｰﾞﾟ｢｣ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝｧｨｩｪｫｬｭｮｯ")
+charZEisu = list(u"０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ")
 
 ########################################
 # modified Inconsolata
@@ -275,20 +291,29 @@ setWidth(fIn, 1000 / 2)
 
 # 拡大 ,.:;
 select(fIn, 0x002c, 0x002e, 0x003a, 0x003b)
-fIn.transform(matRescale(250, 0, 1.15, 1.15))
-setWidth(fIn, 1000 / 2)
-
-# 移動 +-=
-select(fIn, 0x002b, 0x002d, 0x003d)
-fIn.transform(matMove(0, -80))
+fIn.transform(matRescale(250, 0, 1.20, 1.20))
 setWidth(fIn, 1000 / 2)
 
 # 移動 ~
 select(fIn, 0x007e)
 fIn.transform(matMove(0, 120))
 
+# 移動 ()
+select(fIn, list(u"()"))
+fIn.transform(matMove(0, 89))
+
+# 移動 []
+select(fIn, list(u"[]"))
+fIn.transform(matMove(0, 15))
+
+# 移動 {}
+select(fIn, list(u"{}"))
+fIn.transform(matMove(0, 91))
+
 # | -> broken | (Inconsolata's glyph)
 copyAndPaste(fIn, 0x00a6, fIn, 0x007c)
+select(fIn, 0x007c)
+fIn.transform(matMove(0, 100))
 
 # D -> D of Eth (D with cross-bar)
 copyAndPaste(fIn, 0x0110, fIn, 0x0044)
@@ -306,7 +331,10 @@ fIn.em  = newfont_em
 fIn.ascent  = newfont_ascent
 fIn.descent = newfont_descent
 
-setWidth(fIn, newfont_em / 2)
+#setWidth(fIn, newfont_em / 2)
+
+fIn.selection.all()
+fIn.round()
 
 #fIn.generate("../Work/modIncosolata.ttf", '', generate_flags)
 
@@ -341,12 +369,12 @@ fRp.round()
 fRp.close()
 
 ########################################
-# modified GenJyuu
+# modified GenShin
 ########################################
 
 print
-print "Open " + srcfontGenJyuu
-fGj = fontforge.open( srcfontGenJyuu )
+print "Open " + srcfontGenShin
+fGj = fontforge.open( srcfontGenShin )
 
 # modify em
 fGj.em  = newfont_em
@@ -358,27 +386,23 @@ print "modify"
 
 # 半角英数字記号を削除
 select(fIn, rng(0x0021, 0x007E))
-fIn.clear()
+fGj.clear()
 
 # scaling down
 if scalingDownIfWidth_flag == True:
     print "While scaling, wait a little..."
-    charZHKana = list(u"ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをん"),
-    charZKKana = list(u"ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ"),
-    charHKKana = list(u"､｡･ｰﾞﾟ｢｣ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝｧｨｩｪｫｬｭｮｯ")
-    charZEisu = list(u"０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ")
     # 0.91はRictyに準じた。
-    select(fGj, (rng(0x0021, 0x007E), charZHKana, charZKKana, charHKKana))
-    fGj.selection.invert()
+    selectExistAll(fGj)
+    selectLess(fGj, (charASCII, charHKKana, charZHKana, charZKKana, charZEisu))
     scalingDownIfWidth(fGj, 0.91, 0.91)
     # 平仮名/片仮名のサイズを調整
     select(fGj, (charZHKana,charZKKana))
     scalingDownIfWidth(fGj, 0.97, 0.97)
-    # 0.86は全角数字を半角数字の高さに合わせるために調整
+    # 全角英数の高さを調整 (半角英数の高さに合わせる)
     select(fGj, charZEisu)
-    scalingDownIfWidth(fGj, 1.00, 0.95)
+    scalingDownIfWidth(fGj, 0.91, 0.86)
 
-#fGj.generate("../Work/modGenJyuu.ttf", '', generate_flags)
+#fGj.generate("../Work/modGenShin.ttf", '', generate_flags)
 
 ########################################
 # create MyricaM
@@ -391,23 +415,22 @@ print "Build " + newfontM[0]
 # pre-process
 setFontProp(fMm, newfontM)
 
-# marge HintingParts
-print "marge HintingParts to MyricaM"
-fMm.mergeFonts( srcfontHintingParts )
-
 # marge Mgen+
-print "marge GenJyuu"
+print "marge GenShin"
 # マージ
-fMm.mergeFonts( srcfontGenJyuu )
+fMm.mergeFonts( srcfontGenShin )
 fMm.os2_unicoderanges = fGj.os2_unicoderanges
 fMm.os2_codepages = fGj.os2_codepages
 # ルックアップテーブルの置換え
 for l in fGj.gsub_lookups:
-    if (l in fMm.gsub_lookups) == False:
-        fMm.importLookups(fGj, l)
+    fMm.importLookups(fGj, l)
 for l in fMm.gsub_lookups:
     if l.startswith(fGj.fontname + "-") == True:
         fMm.removeLookup(l)
+#for l in fMm.gpos_lookups:
+#    fMm.removeLookup(l)
+#for l in fGj.gpos_lookups:
+#   fMm.importLookups(fGj, l)
 
 # post-process
 fMm.selection.all()
@@ -417,6 +440,49 @@ fMm.round()
 print "Generate " + newfontM[0]
 fMm.generate(newfontM[0], '', generate_flags)
 
+# marge HinthingParts
+if os.path.exists( srcfontHintingParts ) == True:
+    print "marge HintingParts"
+    shutil.copyfile(newfontM[0], outfontNoHint)
+    fHp = fontforge.open( srcfontHintingParts )
+
+    #property
+    setFontProp(fHp, newfontM)
+
+    # modify em
+    fHp.em  = newfont_em
+    fHp.ascent  = newfont_ascent
+    fHp.descent = newfont_descent
+
+    # delete
+    for glyph in fHp.glyphs():
+        if glyph.unicode <= 0:
+            select(fHp, glyph.glyphname)
+            fHp.clear()
+
+    # marge
+    fHp.mergeFonts( newfontM[0] )
+    fHp.os2_unicoderanges = fMm.os2_unicoderanges
+    fHp.os2_codepages = fMm.os2_codepages
+    # ルックアップテーブルの置換え
+    for l in fMm.gsub_lookups:
+        fHp.importLookups(fMm, l)
+    for l in fHp.gsub_lookups:
+        if l.startswith(fMm.fontname + "-") == True:
+            fHp.removeLookup(l)
+#    for l in fHp.gpos_lookups:
+#        fHp.removeLookup(l)
+#    for l in fMm.gpos_lookups:
+#       fHp.importLookups(fMm, l)
+
+    # post-process
+    fHp.selection.all()
+    fHp.round()
+
+    # generate
+    print "Generate " + newfontM[0] + " with Hinting"
+    fHp.generate(newfontM[0], '', generate_flags)
+    fHp.close()
 
 fMm.close()
 fGj.close()
@@ -441,10 +507,10 @@ fMp.os2_panose = tuple(panose)
 # modify
 print "modify"
 
+# 全角
+zenkaku = (60,)
 # 半角
 hankaku = (50,)
-# 全角
-zenkaku = (50,)
 
 # 全文字の幅の自動設定
 fMp.selection.all()
@@ -499,17 +565,17 @@ fMn.os2_panose = tuple(panose)
 print "modify"
 
 # 半角英数
-heisu = (0.85, 1.00, 50, (rng(0x0030,0x0039), rng(0x0041,0x005A), rng(0x0061,0x007A)))
+heisu = (0.68, 1.00, 50, (rng(0x0030,0x0039), rng(0x0041,0x005A), rng(0x0061,0x007A)))
 # 半角記号
-hkigo = (0.85, 1.00, 50, (rng(0x0021,0x002F), rng(0x003A,0x0040), rng(0x005B,0x0060), rng(0x007B,0x007E)))
+hkigo = (0.68, 1.00, 50, (rng(0x0021,0x002F), rng(0x003A,0x0040), rng(0x005B,0x0060), rng(0x007B,0x007E)))
 # 全角かな
-zkana = (0.50, 1.00, 50, rng(0x3041,0x31FF))
+zkana = (0.55, 1.00, 50, rng(0x3041,0x31FF))
 # 半角かな
-hkana = (0.85, 1.00, 50, rng(0xFF66,0xFF9F))
+hkana = (0.68, 1.00, 50, rng(0xFF66,0xFF9F))
 # その他の全角文字
 zetc  = (0.60, 1.00, 50)
 # その他の半角文字
-hetc  = (0.85, 1.00, 50)
+hetc  = (0.68, 1.00, 50)
 
 # 拡大縮小 と 幅の自動設定
 fMn.selection.all()
@@ -531,15 +597,15 @@ for glyph in fMn.selection.byGlyphs:
 
 # 半角数字は幅固定で中央配置
 select(fMn, rng(0x0030,0x0039))   # 0-9
-setWidth(fMn, 400)
+setWidth(fMn, 350)
 centerInWidth(fMn)
 
 # スペース
 select(fMn, 0x0020)   # 半角スペース
-setWidth(fMn, 200)
+setWidth(fMn, 350)
 centerInWidth(fMn)
 select(fMn, 0x3000)   # 全角スペース
-setWidth(fMn, 400)
+setWidth(fMn, 500)
 centerInWidth(fMn)
 
 # post-process
