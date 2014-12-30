@@ -10,7 +10,7 @@ Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォ
 多くの特徴をプログラミング用フォント Ricty から継承しています。  
 
 * ASCII文字は「Inconsolata」が適用されます。  
-* それ以外の文字には「源柔ゴシック」が適用されます。  
+* それ以外の文字には「源真ゴシック」が適用されます。  
 * 半角文字と全角文字の横幅の比が 1:2 に調整されています。  
 * 視認性の高い日本語文字 (半濁音など) が使用できます。  
 
@@ -69,7 +69,7 @@ Ricty はとても素晴らしいフォントですが、幾つかの不満点�
 
 * ヒンティング付きの Inconsolata を使用し、ヒンティングを消さないように合成した。  
 * アスタリスク(*) を含む幾つかを好みのオリジナルな字形に変更した。  
-* ASCII文字以外は 源柔ゴシック を元に合成した。  
+* ASCII文字以外は 源真ゴシック を元に合成した。  
 
 
 
@@ -85,8 +85,8 @@ ASCII文字(0x21-0x7E) を「Inconsolata」で置換え、さらに以下の変�
 * "'`,.:; を大きめに修正  
 
 
-ASCII文字以外は「源柔ゴシック」をベースとしました。  
-※源柔ゴシック: 「源ノ角ゴシック」をベースとして作成された丸ゴシック化した日本語フォント  
+ASCII文字以外は「源真ゴシック」をベースとしました。  
+※源真ゴシック: 「源ノ角ゴシック」をベースとして作成された日本語フォント  
 
 
 一部の文字を修正しました。  
@@ -105,8 +105,8 @@ ASCII文字以外は「源柔ゴシック」をベースとしました。
 「SIL OPEN FONT LICENSE Version 1.1」と「Apache 2.0 License」のデュアルライセンスです。
 
 * ASCII文字は、Inconsolata と同じ SIL OPEN FONT LICENSE Version 1.1 のもとで使用することができます。  
-* ASCII文字以外 は、源柔ゴシック と同じ Apache 2.0 License のもとで使用することができます。  
-* 源柔ゴシック の一部に M+ OUTLINE FONTS 由来の文字グリフが含まれています。  
+* ASCII文字以外 は、源真ゴシック と同じ Apache 2.0 License のもとで使用することができます。  
+* 源真ゴシック の一部に M+ OUTLINE FONTS 由来の文字グリフが含まれています。  
 
 SIL OPEN FONT LICENSE Version 1.1 の内容は、アーカイブに同梱の LICENSE_OFL.txt に記載されています。  
 この日本語訳は、以下から参照することができます。  
@@ -119,7 +119,7 @@ http://sourceforge.jp/projects/opensource/wiki/licenses%2FApache_License_2.0
 M+ OUTLINE FONTS のグリフは、同梱のファイル LICENSE_M+.txt に記載された自由なM+ FONTS LICENSE に基づき使用しています  
 
 
-* Myrica は、Inconsolata と 源柔ゴシック を合成したフォントです。  
+* Myrica は、Inconsolata と 源真ゴシック を合成したフォントです。  
 * フォントデータに含まれる、Inconsolata 由来の文字グリフの著作権は Raph Levien, Cyreal が所有しています。  
 * フォントデータに含まれる、源ノ角ゴシック由来の文字グリフの著作権は Adobe が所有しています。  
 * 源ノ角ゴシックに含まれる、M+ OUTLINE FONTS 由来の文字グリフの著作権は M+ FONTS PROJECT が所有しています。  
@@ -129,7 +129,7 @@ M+ OUTLINE FONTS のグリフは、同梱のファイル LICENSE_M+.txt に記�
 ## 名前の由来  
 それぞれの作者の頭文字から Myrica と命名しました。  
 
-* 源柔ゴシック 作者の MM氏  
+* 源真ゴシック 作者の MM氏  
 * Ricty 作者の Yusa 氏  
 * Inconsolata 作者の Raph Levien 氏  
 * Migu 作者の itouhiro 氏  
@@ -149,8 +149,8 @@ https://github.com/yascentur/Ricty
 * Inconsolata  
 https://www.google.com/fonts/specimen/Inconsolata  
 
-* 源柔ゴシック  
-http://jikasei.me/font/genjyuu/  
+* 源真ゴシック  
+http://jikasei.me/font/genshin/  
 
 * M+ OUTLINE FONTS  
 http://mplus-fonts.sourceforge.jp/  
@@ -164,6 +164,15 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 
 
 ## 改版履歴  
+
+#### Version 2.002.20141230  
+
+* 日本語フォントのベースを源真ゴシックに変更  
+　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
+　　源真ゴシック : GenShinGothic-Monospace-Light.ttf (1.058.20140828)  
+
+* Inconsolata をベースとした文字の改変  
+　　「 + - = ~ <> () [] {} | 」の文字の位置を調整    
 
 #### Version 2.001.20141221  
 
