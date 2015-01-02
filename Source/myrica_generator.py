@@ -28,7 +28,7 @@ newfontN  = ("../Work/MyricaN.ttf", "MyricaN", "Myrica N", "Myrica Narrow")
 
 # source file
 srcfontIncosolata   = "../SourceTTF/Inconsolata-Regular.ttf"
-srcfontGenShin      = "../SourceTTF/GenShinGothic-Monospace-ExtraLight-ExpandH20.ttf"
+srcfontGenShin      = "../SourceTTF/GenShinGothic-Monospace-ExtraLight-ExpandH25.ttf"
 srcfontReplaceParts = "ReplaceParts.ttf"
 srcfontHintingParts = "HintingParts.ttf"
 
