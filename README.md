@@ -149,8 +149,8 @@ https://github.com/yascentur/Ricty
 * Inconsolata  
 https://www.google.com/fonts/specimen/Inconsolata  
 
-* 源真ゴシック  
-http://jikasei.me/font/genshin/  
+* 源真ゴシック、源柔ゴシック  
+http://jikasei.me/font/  
 
 * M+ OUTLINE FONTS  
 http://mplus-fonts.sourceforge.jp/  
