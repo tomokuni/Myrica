@@ -165,14 +165,26 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 
 ## 改版履歴  
 
+#### Version 2.003.20150102  
+
+* 日本語フォントのベースを源真ゴシック(極細)に変更  
+　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
+　　源柔ゴシック : GenJyuuGothic-Monospace-Light.ttf (1.058.20140828)  
+　　源真ゴシック : GenShinGothic-Monospace-ExtraLight.ttf (1.058.20140828)  
+
+* 全角ひらかな/カタカナ以外のベースを源真ゴシック(極細)に変更  
+
 #### Version 2.002.20141230  
 
 * 日本語フォントのベースを源真ゴシックに変更  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
+　　源柔ゴシック : GenJyuuGothic-Monospace-Light.ttf (1.058.20140828)  
 　　源真ゴシック : GenShinGothic-Monospace-Light.ttf (1.058.20140828)  
 
 * Inconsolata をベースとした文字の改変  
 　　「 + - = ~ <> () [] {} | 」の文字の位置を調整    
+
+* 全角ひらかな/カタカナのベースを源柔ゴシック、それ以外を源真ゴシックに変更  
 
 #### Version 2.001.20141221  
 
