@@ -179,7 +179,7 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 * 日本語フォントのベースを源真ゴシックに変更  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
 　　源柔ゴシック : GenJyuuGothic-Monospace-Light.ttf (1.058.20140828)  
-　　源真ゴシック : GenShinGothic-Monospace-ExtraLight.ttf (1.058.20140828)  
+　　源真ゴシック : GenShinGothic-Monospace-Light.ttf (1.058.20140828)  
 
 * Inconsolata をベースとした文字の改変  
 　　「 + - = ~ <> () [] {} | 」の文字の位置を調整    
