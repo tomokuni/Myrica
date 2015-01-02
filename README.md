@@ -18,7 +18,7 @@ Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォ
 以下の文字にはヒンティング情報がありますので、Windowsでもクッキリしています。  
 
 * ASCII文字はヒンティング付きの Inconsolata から、ヒンティング情報を継承しています。  
-* 平仮名と片仮名はにもヒンティング情報を付加しています。  
+* 平仮名と片仮名にもヒンティング情報を付加しています。  
 
 
 
@@ -179,7 +179,7 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 * 日本語フォントのベースを源真ゴシックに変更  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
 　　源柔ゴシック : GenJyuuGothic-Monospace-Light.ttf (1.058.20140828)  
-　　源真ゴシック : GenShinGothic-Monospace-Light.ttf (1.058.20140828)  
+　　源真ゴシック : GenShinGothic-Monospace-ExtraLight.ttf (1.058.20140828)  
 
 * Inconsolata をベースとした文字の改変  
 　　「 + - = ~ <> () [] {} | 」の文字の位置を調整    
