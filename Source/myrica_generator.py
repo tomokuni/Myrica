@@ -7,7 +7,7 @@
 # This script is for generating ``myrica'' font
 #
 # * Inconsolata  : Inconsolata-Regular.ttf                : 1.013 (Google Fonts)
-# * 源真ゴシック : GenShinGothic-Monospace-ExtraLight.ttf : 1.058.20140828
+# * 源真ゴシック : GenShinGothic-Monospace-ExtraLight.ttf : 1.001.20150116
 #
 # 以下のように構成されます。
 # ・英数字記号は、Inconsolata
@@ -18,7 +18,7 @@
 #     ～〜（FULLWIDTH TILDE・WAVE DASH）の区別
 
 # version
-newfont_version      = "2.003.20150102"
+newfont_version      = "2.004.20150214"
 newfont_sfntRevision = 0x00010000
 
 # set font name
@@ -28,7 +28,7 @@ newfontN  = ("../Work/MyricaN.ttf", "MyricaN", "Myrica N", "Myrica Narrow")
 
 # source file
 srcfontIncosolata   = "../SourceTTF/Inconsolata-Regular.ttf"
-srcfontGenShin      = "../SourceTTF/GenShinGothic-Monospace-ExtraLight-ExpandH40.ttf"
+srcfontGenShin      = "../SourceTTF/GenShinGothic-Monospace-ExtraLight-ExpandH15.ttf"
 srcfontReplaceParts = "ReplaceParts.ttf"
 srcfontHintingParts = "HintingParts.ttf"
 
@@ -383,7 +383,7 @@ fGj.descent = newfont_descent
 print "modify"
 
 # 半角英数字記号を削除
-select(fIn, rng(0x0021, 0x007E))
+select(fIn, charASCII)
 fGj.clear()
 
 # scaling down

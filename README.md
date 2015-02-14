@@ -18,7 +18,7 @@ Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォ
 以下の文字にはヒンティング情報がありますので、Windowsでもクッキリしています。  
 
 * ASCII文字はヒンティング付きの Inconsolata から、ヒンティング情報を継承しています。  
-* 平仮名と片仮名はにもヒンティング情報を付加しています。  
+* 平仮名と片仮名にもヒンティング情報を付加しています。  
 
 
 
@@ -149,8 +149,8 @@ https://github.com/yascentur/Ricty
 * Inconsolata  
 https://www.google.com/fonts/specimen/Inconsolata  
 
-* 源真ゴシック  
-http://jikasei.me/font/genshin/  
+* 源真ゴシック、源柔ゴシック  
+http://jikasei.me/font/  
 
 * M+ OUTLINE FONTS  
 http://mplus-fonts.sourceforge.jp/  
@@ -165,6 +165,14 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 
 ## 改版履歴  
 
+#### Version 2.004.20150102  
+
+* 源真ゴシックのバージョンアップに追従して更新  
+　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
+　　源真ゴシック : GenShinGothic-Monospace-ExtraLight.ttf (1.001.20150116)  
+
+* 全角ひらかな/カタカナの源柔ゴシックの使用をを取りやめ  
+
 #### Version 2.003.20150102  
 
 * 日本語フォントのベースを源真ゴシック(極細)に変更  
@@ -173,6 +181,11 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 　　源真ゴシック : GenShinGothic-Monospace-ExtraLight.ttf (1.058.20140828)  
 
 * 全角ひらかな/カタカナ以外のベースを源真ゴシック(極細)に変更  
+
+* 以下の文字は水平方向に太字化を取りやめ
+　　❶❷❸❹❺❻❼❽❾❿➊➋➌➍➎➏➐➑➒➓⓫⓬⓭⓮⓯⓰⓱⓲⓳⓴
+　　🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩
+　　🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉🆊🆋🆌🆍🆎🆏
 
 #### Version 2.002.20141230  
 

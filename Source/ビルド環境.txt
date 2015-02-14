@@ -1,3 +1,3 @@
 OS : Windows 8.1 pro x64
-fontforge : fontforge_20140104
+fontforge : fontforge_20150121
 UniteTTC : UniteTTC for Win32 Ver.20100221
