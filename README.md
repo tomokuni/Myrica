@@ -165,6 +165,11 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 
 ## 改版履歴  
 
+#### Version 2.005.20150220  
+
+* 前版の更新で 〜(WAVE DASH) の文字の反映が漏れていたため、修正
+
+
 #### Version 2.004.20150214  
 
 * 源真ゴシックのバージョンアップに追従して更新  
