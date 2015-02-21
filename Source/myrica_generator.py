@@ -349,14 +349,14 @@ fRp.em  = newfont_em
 fRp.ascent  = newfont_ascent
 fRp.descent = newfont_descent
 
-# marge ReplaceParts
-print "marge ReplaceParts to Incosolata"
 # 文字の置換え
+print "marge ReplaceParts to Incosolata"
 target = (
     0x002a,  # * : astarisk
     0x006c,  # l : small letter l
-    0x2013,  # – : en dash –
-    0x2014)  # — : em dash —
+    0x2013,  # – : en dash
+    0x2014,  # — : em dash
+    0x301c)  # 〜 : WAVE DASH
 copyAndPaste(fRp, target, fIn, target)
 
 # post-process
@@ -364,7 +364,6 @@ fRp.selection.all()
 fRp.round()
 
 #fRp.generate("../Work/modReplaceParts.ttf", '', generate_flags)
-fRp.close()
 
 ########################################
 # modified GenShin
@@ -372,35 +371,35 @@ fRp.close()
 
 print
 print "Open " + srcfontGenShin
-fGj = fontforge.open( srcfontGenShin )
-
-# modify em
-fGj.em  = newfont_em
-fGj.ascent  = newfont_ascent
-fGj.descent = newfont_descent
+fGs = fontforge.open( srcfontGenShin )
 
 # modify
 print "modify"
 
+# modify em
+fGs.em  = newfont_em
+fGs.ascent  = newfont_ascent
+fGs.descent = newfont_descent
+
 # 半角英数字記号を削除
 select(fIn, charASCII)
-fGj.clear()
+fGs.clear()
 
 # scaling down
 if scalingDownIfWidth_flag == True:
     print "While scaling, wait a little..."
     # 0.91はRictyに準じた。
-    selectExistAll(fGj)
-    selectLess(fGj, (charASCII, charHKKana, charZHKana, charZKKana, charZEisu))
-    scalingDownIfWidth(fGj, 0.91, 0.91)
+    selectExistAll(fGs)
+    selectLess(fGs, (charASCII, charHKKana, charZHKana, charZKKana, charZEisu))
+    scalingDownIfWidth(fGs, 0.91, 0.91)
     # 平仮名/片仮名のサイズを調整
-    select(fGj, (charZHKana,charZKKana))
-    scalingDownIfWidth(fGj, 0.97, 0.97)
+    select(fGs, (charZHKana,charZKKana))
+    scalingDownIfWidth(fGs, 0.97, 0.97)
     # 全角英数の高さを調整 (半角英数の高さに合わせる)
-    select(fGj, charZEisu)
-    scalingDownIfWidth(fGj, 0.91, 0.86)
+    select(fGs, charZEisu)
+    scalingDownIfWidth(fGs, 0.91, 0.86)
 
-#fGj.generate("../Work/modGenShin.ttf", '', generate_flags)
+#fGs.generate("../Work/modGenShin.ttf", '', generate_flags)
 
 ########################################
 # create MyricaM
@@ -417,18 +416,18 @@ setFontProp(fMm, newfontM)
 print "marge GenShin"
 # マージ
 fMm.mergeFonts( srcfontGenShin )
-fMm.os2_unicoderanges = fGj.os2_unicoderanges
-fMm.os2_codepages = fGj.os2_codepages
+fMm.os2_unicoderanges = fGs.os2_unicoderanges
+fMm.os2_codepages = fGs.os2_codepages
 # ルックアップテーブルの置換え
-for l in fGj.gsub_lookups:
-    fMm.importLookups(fGj, l)
+for l in fGs.gsub_lookups:
+    fMm.importLookups(fGs, l)
 for l in fMm.gsub_lookups:
-    if l.startswith(fGj.fontname + "-") == True:
+    if l.startswith(fGs.fontname + "-") == True:
         fMm.removeLookup(l)
 #for l in fMm.gpos_lookups:
 #    fMm.removeLookup(l)
-#for l in fGj.gpos_lookups:
-#   fMm.importLookups(fGj, l)
+#for l in fGs.gpos_lookups:
+#   fMm.importLookups(fGs, l)
 
 # post-process
 fMm.selection.all()
@@ -483,7 +482,8 @@ if os.path.exists( srcfontHintingParts ) == True:
     fHp.close()
 
 fMm.close()
-fGj.close()
+fGs.close()
+fRp.close()
 
 ########################################
 # create MyricaP
