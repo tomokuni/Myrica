@@ -350,14 +350,13 @@ fRp.ascent  = newfont_ascent
 fRp.descent = newfont_descent
 
 # 文字の置換え
-print "marge ReplaceParts to Incosolata"
-target = (
-    0x002a,  # * : astarisk
-    0x006c,  # l : small letter l
-    0x2013,  # – : en dash
-    0x2014,  # — : em dash
-    0x301c)  # 〜 : WAVE DASH
-copyAndPaste(fRp, target, fIn, target)
+print "marge ReplaceParts"
+for glyph in fRp.glyphs():
+    if glyph.unicode > 0:
+        select(fRp, glyph.glyphname)
+        fRp.copy()
+        select(fIn, glyph.glyphname)
+        fIn.paste()
 
 # post-process
 fRp.selection.all()
@@ -380,10 +379,6 @@ print "modify"
 fGs.em  = newfont_em
 fGs.ascent  = newfont_ascent
 fGs.descent = newfont_descent
-
-# 半角英数字記号を削除
-select(fIn, charASCII)
-fGs.clear()
 
 # scaling down
 if scalingDownIfWidth_flag == True:

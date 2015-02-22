@@ -1,3 +1,4 @@
 OS : Windows 8.1 pro x64
 fontforge : fontforge_20150121
 UniteTTC : UniteTTC for Win32 Ver.20100221
+7z : 7-Zip 9.20(2010-11-18) Windows”Å (7za.exe, 7za.dll)

@@ -1,0 +1,6 @@
+ReplaceParts.ttf
+    Inconsolata 由来文字でスクリプトでの変形でできない文字を収録
+    Inconsolata 由来以外の文字の字形が SourceTTF と異なる文字を収録
+
+HintingParts.ttf
+    ヒンティングを行う文字をすべて収録
