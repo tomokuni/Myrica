@@ -3,6 +3,8 @@ Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォ
 視認性、判別性 が高くなるように、複数のフォントファイルを元に合成/修正しました。
 
 フォントファイルだけが必要な場合は、Myrica.7z または Myrica.zip ファイルだけを取得するとダウンロードサイズが小さくて便利です。
+Myrica.7z 約4MB  https://github.com/tomokuni/Myrica/raw/master/Myrica.7z
+Myrica.zip 約10MB  https://github.com/tomokuni/Myrica/raw/master/Myrica.zip
 
 
 
@@ -52,7 +54,7 @@ Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォ
 Myrica の最新版は、以下のサイトで頒布しています。  
 
 GitHub
-https://github.com/munotoki/Myrica
+https://github.com/tomokuni/Myrica
 
 
 
@@ -68,8 +70,8 @@ Ricty はとても素晴らしいフォントですが、幾つかの不満点�
 これらに関して、以下のように解決したのが、本フォント Myrica です。  
 
 * ヒンティング付きの Inconsolata を使用し、ヒンティングを消さないように合成した。  
-* アスタリスク(*) を含む幾つかを好みのオリジナルな字形に変更した。  
 * ASCII文字以外は 源真ゴシック を元に合成した。  
+* アスタリスク(*) を含む幾つかを好みのオリジナルな字形に変更した。  
 
 
 
@@ -166,24 +168,26 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 ## 改版履歴  
 
 #### Version 2.005.20150220  
+　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
+　　源真ゴシック : GenShinGothic-Monospace-ExtraLight.ttf (1.001.20150116)  
 
 * 前版の更新で 〜(WAVE DASH) の文字の反映が漏れていたため、修正
 
 
 #### Version 2.004.20150214  
-
-* 源真ゴシックのバージョンアップに追従して更新  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
 　　源真ゴシック : GenShinGothic-Monospace-ExtraLight.ttf (1.001.20150116)  
+
+* 源真ゴシックのバージョンアップに追従して更新  
 
 * 全角ひらかな/カタカナの源柔ゴシックの使用をを取りやめ  
 
 #### Version 2.003.20150102  
-
-* 日本語フォントのベースを源真ゴシック(極細)に変更  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
 　　源柔ゴシック : GenJyuuGothic-Monospace-Light.ttf (1.058.20140828)  
 　　源真ゴシック : GenShinGothic-Monospace-ExtraLight.ttf (1.058.20140828)  
+
+* 日本語フォントのベースを源真ゴシックに変更  
 
 * 全角ひらかな/カタカナ以外のベースを源真ゴシック(極細)に変更  
 
@@ -193,26 +197,23 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 　　🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉🆊🆋🆌🆍🆎🆏
 
 #### Version 2.002.20141230  
-
-* 日本語フォントのベースを源真ゴシックに変更  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
 　　源柔ゴシック : GenJyuuGothic-Monospace-Light.ttf (1.058.20140828)  
 　　源真ゴシック : GenShinGothic-Monospace-Light.ttf (1.058.20140828)  
 
+* 日本語フォントのベースを源柔/源真ゴシックに変更  
+
 * Inconsolata をベースとした文字の改変  
 　　「 + - = ~ <> () [] {} | 」の文字の位置を調整    
 
-* 全角ひらかな/カタカナのベースを源柔ゴシック、それ以外を源真ゴシックに変更  
+* 全角ひらかな/カタカナのベースを源柔ゴシック(細字)、それ以外を源真ゴシックに変更  
 
 #### Version 2.001.20141221  
-
-　　若干だが、ひらがな/カタカナ の好みが源の角ゴシック系だった  
-　　日本語部分が印刷時に文字が太くて文字が判別しにくいため、ベースのフォントを細字に変更  
-　　細字にしただけだと、画面での表示が貧弱だったため、水平方向に太字化  
-
-* 日本語フォントのベースを源柔ゴシックに変更  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
 　　源柔ゴシック : GenJyuuGothic-Monospace-Light.ttf (1.058.20140828)  
+
+* 日本語部分が印刷時に文字が太くて文字が判別しにくいため、ベースのフォントを細字を持つ源柔ゴシック(細字)に変更  
+* 細字にしただけだと、画面での表示が貧弱だったため、水平方向に太字化  
 
 * Inconsolata をベースとした文字の改変  
 　　「 * l – — 」の文字をオリジナルに変更  
@@ -228,11 +229,11 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 　　ひらかな/カタカナへのヒント情報の付加
 
 #### Version 1.012.20141102  
-
-* Mgen+ をベースとした最終版
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
 　　Mgen+       : mgenplus-1m-regular.ttf (1.058.20140808 (20140828)  
 　　Migu        : migu-1m-regular.ttf (2013.0617 (20130617)  
+
+* Mgen+ をベースとした最終版
 
 * 改変内容  
 　　「 * l – — 」の文字をオリジナルに変更  
