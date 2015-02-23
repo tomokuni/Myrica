@@ -270,3 +270,7 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 　　「カ力 エ工 ロ口 ー一 ニ二」（カタカナ・漢字）の区別  
 　　「～〜」（FULLWIDTH TILDE・WAVE DASH）の区別  
 　　ひらかな/カタカナへのヒント情報の付加
+
+
+## ペン字練習  
+[![PENJI](http://kanji-note.jp/)](http://kanji-note.jp/wp/wp-content/uploads/2015/01/topimage3_2-933x350.jpg)
