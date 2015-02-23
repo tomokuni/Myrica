@@ -48,9 +48,9 @@ MyricaM.zip  約9MB   https://github.com/tomokuni/Myrica/raw/master/MyricaM.zip
 
 * ### MyricaM.ttc
 　　　Mgen+ をベースとした以下の３フォントをパッケージしたファイルです。  
-　　　・MyricaM M
-　　　・MyricaM P
-　　　・MyricaM N
+　　　・MyricaM M  
+　　　・MyricaM P  
+　　　・MyricaM N  
 
 
 
@@ -128,6 +128,7 @@ M+ OUTLINE FONTS のグリフは、同梱のファイル LICENSE_M+.txt に記�
 
 
 * Myrica は、Inconsolata と 源真ゴシック を合成したフォントです。  
+* Myrica は、Inconsolata と Mgen+ を合成したフォントです。  
 * フォントデータに含まれる、Inconsolata 由来の文字グリフの著作権は Raph Levien, Cyreal が所有しています。  
 * フォントデータに含まれる、源ノ角ゴシック由来の文字グリフの著作権は Adobe が所有しています。  
 * 源ノ角ゴシックに含まれる、M+ OUTLINE FONTS 由来の文字グリフの著作権は M+ FONTS PROJECT が所有しています。  
