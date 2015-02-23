@@ -2,9 +2,11 @@
 Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォントです。  
 視認性、判別性 が高くなるように、複数のフォントファイルを元に合成/修正しました。  
 
-フォントファイルだけが必要な場合は、Myrica.7z または Myrica.zip ファイルだけを取得するとダウンロードサイズが小さくて便利です。  
-Myrica.7z 約4MB  https://github.com/tomokuni/Myrica/raw/master/Myrica.7z  
-Myrica.zip 約10MB  https://github.com/tomokuni/Myrica/raw/master/Myrica.zip  
+フォントファイルだけが必要な場合は、7z または zip ファイルだけを取得するとダウンロードサイズが小さくて便利です。  
+Myrica.7z  約4MB   https://github.com/tomokuni/Myrica/raw/master/Myrica.7z  
+Myrica.zip  約9MB   https://github.com/tomokuni/Myrica/raw/master/Myrica.zip  
+MyricaM.7z  約4MB   https://github.com/tomokuni/Myrica/raw/master/MyricaM.7z  
+MyricaM.zip  約9MB   https://github.com/tomokuni/Myrica/raw/master/MyricaM.zip  
 
 
 
@@ -12,7 +14,7 @@ Myrica.zip 約10MB  https://github.com/tomokuni/Myrica/raw/master/Myrica.zip
 多くの特徴をプログラミング用フォント Ricty から継承しています。  
 
 * ASCII文字は「Inconsolata」が適用されます。  
-* それ以外の文字には「源真ゴシック」が適用されます。  
+* それ以外の文字には「源真ゴシック」または「Mgen+」が適用されます。  
 * 半角文字と全角文字の横幅の比が 1:2 に調整されています。  
 * 視認性の高い日本語文字 (半濁音など) が使用できます。  
 
@@ -25,27 +27,30 @@ Myrica.zip 約10MB  https://github.com/tomokuni/Myrica/raw/master/Myrica.zip
 
 
 ## フォントイメージ  
-![Font Image](/Source/FontImage.png)
+![Font Image](/Source/myrica_FontImage.png)
 
 
 ## フォント構成  
 
 * ### Myrica.ttc
-　　　以下の３フォントをパッケージしたファイルです。  
+　　　源真ゴシックをベースとした以下の３フォントをパッケージしたファイルです。  
+　　　・Myrica M
+　　　　等幅フォントです。プログラミング用に作成しました。  
+　　　・Myrica P
+　　　　なんちゃってプロポーショナルフォントです。  
+　　　　グリフはそのままに、文字の左右スペースを削り、プロポーショナル文字っぽく作成しました。  
+　　　　ただし、数字(0-9)は幅固定しています。  
+　　　・Myrica N
+　　　　幅を狭くしたフォントです。一定幅で多くの文字を表示できるように作成しました。  
+　　　　グリフは、半角文字:68%、全角かな文字:65%、その他の全角文字:60% に縮小し、  
+　　　　文字の左右スペースを削り、プロポーショナル文字っぽく作成しました。  
+　　　　ただし、数字(0-9)は幅固定しています。  
 
-* ### MyricaM
-　　　等幅フォントです。プログラミング用に作成しました。  
-
-* ### MyricaP
-　　　なんちゃってプロポーショナルフォントです。  
-　　　グリフはそのままに、文字の左右スペースを削り、プロポーショナル文字っぽく作成しました。  
-　　　ただし、数字(0-9)は幅固定しています。  
-
-* ### MyricaN
-　　　幅を狭くしたフォントです。一定幅で多くの文字を表示できるように作成しました。  
-　　　グリフは、半角文字:68%、全角かな文字:65%、その他の全角文字:60% に縮小し、  
-　　　文字の左右スペースを削り、プロポーショナル文字っぽく作成しました。  
-　　　ただし、数字(0-9)は幅固定しています。  
+* ### MyricaM.ttc
+　　　Mgen+ をベースとした以下の３フォントをパッケージしたファイルです。  
+　　　・MyricaM M
+　　　・MyricaM P
+　　　・MyricaM N
 
 
 
@@ -70,7 +75,7 @@ Ricty はとても素晴らしいフォントですが、幾つかの不満点�
 これらに関して、以下のように解決したのが、本フォント Myrica です。  
 
 * ヒンティング付きの Inconsolata を使用し、ヒンティングを消さないように合成した。  
-* ASCII文字以外は 源真ゴシック を元に合成した。  
+* ASCII文字以外は 源真ゴシック または Mgen+ を元に合成した。  
 * アスタリスク(*) を含む幾つかを好みのオリジナルな字形に変更した。  
 
 
@@ -87,8 +92,9 @@ ASCII文字(0x21-0x7E) を「Inconsolata」で置換え、さらに以下の変�
 * "'`,.:; を大きめに修正  
 
 
-ASCII文字以外は「源真ゴシック」をベースとしました。  
+ASCII文字以外は「源真ゴシック」または「Mgen+」をベースとしました。  
 ※源真ゴシック: 「源ノ角ゴシック」をベースとして作成された日本語フォント  
+※Mgen+: 「M+ OUTLINE FONTS」をベースとして、これに含まれない漢字・記号のグリフを「源ノ角ゴシック」で補った日本語フォント  
 
 
 一部の文字を修正しました。  
@@ -107,8 +113,8 @@ ASCII文字以外は「源真ゴシック」をベースとしました。
 「SIL OPEN FONT LICENSE Version 1.1」と「Apache 2.0 License」のデュアルライセンスです。
 
 * ASCII文字は、Inconsolata と同じ SIL OPEN FONT LICENSE Version 1.1 のもとで使用することができます。  
-* ASCII文字以外 は、源真ゴシック と同じ Apache 2.0 License のもとで使用することができます。  
-* 源真ゴシック の一部に M+ OUTLINE FONTS 由来の文字グリフが含まれています。  
+* ASCII文字以外 は、源真ゴシック/Mgen+ と同じ Apache 2.0 License のもとで使用することができます。  
+* 源真ゴシック/Mgen+ には M+ OUTLINE FONTS 由来の文字グリフが含まれています。  
 
 SIL OPEN FONT LICENSE Version 1.1 の内容は、アーカイブに同梱の LICENSE_OFL.txt に記載されています。  
 この日本語訳は、以下から参照することができます。  
@@ -131,7 +137,7 @@ M+ OUTLINE FONTS のグリフは、同梱のファイル LICENSE_M+.txt に記�
 ## 名前の由来  
 それぞれの作者の頭文字から Myrica と命名しました。  
 
-* 源真ゴシック 作者の MM氏  
+* 源真ゴシック/Mgen+ 作者の MM氏  
 * Ricty 作者の Yusa 氏  
 * Inconsolata 作者の Raph Levien 氏  
 * Migu 作者の itouhiro 氏  
@@ -151,7 +157,7 @@ https://github.com/yascentur/Ricty
 * Inconsolata  
 https://www.google.com/fonts/specimen/Inconsolata  
 
-* 源真ゴシック、源柔ゴシック  
+* 源真ゴシック、源柔ゴシック、Mgen+  
 http://jikasei.me/font/  
 
 * M+ OUTLINE FONTS  
@@ -164,8 +170,7 @@ http://store1.adobe.com/cfusion/store/html/index.cfm?store=OLS-JP&event=displayF
 http://mix-mplus-ipa.sourceforge.jp/migu/  
 
 
-
-## 改版履歴  
+## Myrica 改版履歴  
 
 #### Version 2.005.20150220  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
@@ -192,7 +197,9 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 * 全角ひらかな/カタカナ以外のベースを源真ゴシック(極細)に変更  
 
 * 以下の文字は水平方向に太字化を取りやめ
-　　❶❷❸❹❺❻❼❽❾❿➊➋➌➍➎➏➐➑➒➓⓫⓬⓭⓮⓯⓰⓱⓲⓳⓴
+　　❶❷❸❹❺❻❼❽❾❿
+　　➊➋➌➍➎➏➐➑➒➓
+　　⓫⓬⓭⓮⓯⓰⓱⓲⓳⓴⓵⓶⓷⓸⓹⓺⓻⓼⓽⓾⓿
 　　🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩
 　　🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉🆊🆋🆌🆍🆎🆏
 
@@ -227,6 +234,23 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 　　「カ力 エ工 ロ口 ー一 ニ二」（カタカナ・漢字）の区別  
 　　「～〜」（FULLWIDTH TILDE・WAVE DASH）の区別  
 　　ひらかな/カタカナへのヒント情報の付加
+
+
+## MyricaM 改版履歴  
+
+#### Version 2.005.20150223  
+　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
+　　Mgen+       : mgenplus-1m-thin.ttf (1.059.20150116)  
+
+* Mgen+ をベースとしたフォントを復活
+
+* Mgen+ をベースとした文字の改変  
+　　ASCII文字以外を水平/垂直方向に太字化(H:20, V:5)  
+　　「ぱぴぷぺぽパピプペポ」の半濁点を大きく  
+　　「カ力 エ工 ロ口 ー一 ニ二」（カタカナ・漢字）の区別  
+　　「～〜」（FULLWIDTH TILDE・WAVE DASH）の区別  
+　　ひらかな/カタカナへのヒント情報の付加
+
 
 #### Version 1.012.20141102  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  

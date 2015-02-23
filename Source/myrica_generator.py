@@ -12,7 +12,7 @@
 # 以下のように構成されます。
 # ・英数字記号は、Inconsolata
 # ・他の文字は、源真ゴシック
-# ・一部の文字を視認性向上のため、源真ゴシックをベースに migu の特徴を取込み
+# ・一部の文字を視認性向上のために migu の特徴を取込み
 #     半濁点（ぱぴぷぺぽパピプペポ の右上の円）を大きくして、濁点と判別しやすく
 #     「カ力 エ工 ロ口 ー一 ニ二」（カタカナ・漢字）の区別
 #     ～〜（FULLWIDTH TILDE・WAVE DASH）の区別
@@ -28,9 +28,9 @@ newfontN  = ("../Work/MyricaN.ttf", "MyricaN", "Myrica N", "Myrica Narrow")
 
 # source file
 srcfontIncosolata   = "../SourceTTF/Inconsolata-Regular.ttf"
-srcfontGenShin      = "../SourceTTF/GenShinGothic-Monospace-ExtraLight-ExpandH15.ttf"
-srcfontReplaceParts = "ReplaceParts.ttf"
-srcfontHintingParts = "HintingParts.ttf"
+srcfontGenShin      = "../SourceTTF/GenShinGothic-Monospace-ExtraLight-BoldH15V1.ttf"
+srcfontReplaceParts = "myrica_ReplaceParts.ttf"
+srcfontHintingParts = "myrica_HintingParts.ttf"
 
 # out file
 outfontNoHint = "../Work/MyricaM_NoHint.ttf"
@@ -273,6 +273,25 @@ charHKKana = list(u"､｡･ｰﾞﾟ｢｣ｱｲｳｴｵｶｷｸｹｺｻｼ
 charZEisu = list(u"０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ")
 
 ########################################
+# modified ReplaceParts
+########################################
+
+print
+print "Open " + srcfontReplaceParts
+fRp = fontforge.open( srcfontReplaceParts )
+
+# modify em
+fRp.em  = newfont_em
+fRp.ascent  = newfont_ascent
+fRp.descent = newfont_descent
+
+# post-process
+fRp.selection.all()
+fRp.round()
+
+#fRp.generate("../Work/modReplaceParts.ttf", '', generate_flags)
+
+########################################
 # modified Inconsolata
 ########################################
 
@@ -319,35 +338,10 @@ copyAndPaste(fIn, 0x0110, fIn, 0x0044)
 # r -> r of serif (Inconsolata's unused glyph)
 copyAndPaste(fIn,  65548, fIn, 0x0072)
 
-# 必要文字(半角英数字記号)だけを残して削除
-select(fIn, rng(0x0021, 0x007E))
-fIn.selection.invert()
-fIn.clear()
-
 # modify em
 fIn.em  = newfont_em
 fIn.ascent  = newfont_ascent
 fIn.descent = newfont_descent
-
-#setWidth(fIn, newfont_em / 2)
-
-fIn.selection.all()
-fIn.round()
-
-#fIn.generate("../Work/modIncosolata.ttf", '', generate_flags)
-
-########################################
-# modified ReplaceParts
-########################################
-
-print
-print "Open " + srcfontReplaceParts
-fRp = fontforge.open( srcfontReplaceParts )
-
-# modify em
-fRp.em  = newfont_em
-fRp.ascent  = newfont_ascent
-fRp.descent = newfont_descent
 
 # 文字の置換え
 print "marge ReplaceParts"
@@ -358,11 +352,15 @@ for glyph in fRp.glyphs():
         select(fIn, glyph.glyphname)
         fIn.paste()
 
-# post-process
-fRp.selection.all()
-fRp.round()
+# 必要文字(半角英数字記号)だけを残して削除
+select(fIn, rng(0x0021, 0x007E))
+fIn.selection.invert()
+fIn.clear()
 
-#fRp.generate("../Work/modReplaceParts.ttf", '', generate_flags)
+fIn.selection.all()
+fIn.round()
+
+#fIn.generate("../Work/modIncosolata.ttf", '', generate_flags)
 
 ########################################
 # modified GenShin
@@ -379,6 +377,15 @@ print "modify"
 fGs.em  = newfont_em
 fGs.ascent  = newfont_ascent
 fGs.descent = newfont_descent
+
+# 文字の置換え
+print "marge ReplaceParts"
+for glyph in fRp.glyphs():
+    if glyph.unicode > 0:
+        select(fRp, glyph.glyphname)
+        fRp.copy()
+        select(fIn, glyph.glyphname)
+        fIn.paste()
 
 # scaling down
 if scalingDownIfWidth_flag == True:
@@ -397,7 +404,7 @@ if scalingDownIfWidth_flag == True:
 #fGs.generate("../Work/modGenShin.ttf", '', generate_flags)
 
 ########################################
-# create MyricaM
+# create Myrica Monospace
 ########################################
 fMm = fIn
 
@@ -481,7 +488,7 @@ fGs.close()
 fRp.close()
 
 ########################################
-# create MyricaP
+# create Myrica Proportional
 ########################################
 print
 print "Build " + newfontP[0]
@@ -538,7 +545,7 @@ fMp.generate(newfontP[0], '', generate_flags)
 fMp.close()
 
 ########################################
-# create MyricaN
+# create Myrica Narrow
 ########################################
 print
 print "Build " + newfontN[0]
