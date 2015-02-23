@@ -272,5 +272,5 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 　　ひらかな/カタカナへのヒント情報の付加
 
 
-## ペン字練習  
+## ペン字練習 (美漢字ノート)  
 [![PENJI](http://kanji-note.jp/wp/wp-content/uploads/2015/01/topimage3_2-933x350.jpg)](http://kanji-note.jp/)
