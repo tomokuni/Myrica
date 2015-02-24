@@ -27,7 +27,7 @@ MyricaM.zip  約9MB   https://github.com/tomokuni/Myrica/raw/master/MyricaM.zip
 
 
 ## フォントイメージ  
-![Font Image](/Source/myrica_FontImage.png)
+![Font Image](/Source/myrica_FontImage.png)  
 
 
 ## フォント構成  
@@ -58,8 +58,8 @@ MyricaM.zip  約9MB   https://github.com/tomokuni/Myrica/raw/master/MyricaM.zip
 
 Myrica の最新版は、以下のサイトで頒布しています。  
 
-GitHub
-https://github.com/tomokuni/Myrica
+GitHub  
+https://github.com/tomokuni/Myrica  
 
 
 
@@ -171,16 +171,16 @@ http://store1.adobe.com/cfusion/store/html/index.cfm?store=OLS-JP&event=displayF
 http://mix-mplus-ipa.sourceforge.jp/migu/  
 
 
-## [Myrica 改版履歴](Myrica_改版履歴.md "Myrica 改版履歴")
+## [Myrica 改版履歴](Myrica_改版履歴.md "Myrica 改版履歴")  
 
-## [MyricaM 改版履歴](MyricaM_改版履歴.md "MyricaM 改版履歴")
+## [MyricaM 改版履歴](MyricaM_改版履歴.md "MyricaM 改版履歴")  
 
-
-
-
-
+  
+  
+  
+  
 
 ## ペン字練習 (美漢字ノート)  
-きれいなペン字が書きたい場合はこちら
-[![PENJI](http://kanji-note.jp/aff/file/image/201502/67b031d38be778cc704efe4756e178e3.png)](http://kanji-note.jp/aff/link.php?id=N0000002&adwares=A0000001)
-[![PENJI](http://kanji-note.jp/aff/file/image/201502/0ef2c59ee906b97b8b39dac5b4fef722.png)](http://kanji-note.jp/aff/link.php?id=N0000002&adwares=A0000001)
+きれいなペン字が書きたい場合はこちら  
+[![PENJI](http://kanji-note.jp/aff/file/image/201502/67b031d38be778cc704efe4756e178e3.png)](http://kanji-note.jp/aff/link.php?id=N0000002&adwares=A0000001)  
+[![PENJI](http://kanji-note.jp/aff/file/image/201502/0ef2c59ee906b97b8b39dac5b4fef722.png)](http://kanji-note.jp/aff/link.php?id=N0000002&adwares=A0000001)  
