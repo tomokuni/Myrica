@@ -30,24 +30,25 @@ MyricaM.zip  約9MB   https://github.com/tomokuni/Myrica/raw/master/MyricaM.zip
 ![Font Image](/Source/myrica_FontImage.png)  
 
 
+
 ## フォント構成  
 
 * ### Myrica.ttc
-　　　源真ゴシックをベースとした以下の３フォントをパッケージしたファイルです。  
-　　　・Myrica M
+　　　ASCII文字は Inconsolata、それ以外の文字は 源真ゴシック をベースとした以下の３フォントをパッケージしたファイルです。  
+　　　・Myrica M  
 　　　　等幅フォントです。プログラミング用に作成しました。  
-　　　・Myrica P
+　　　・Myrica P  
 　　　　なんちゃってプロポーショナルフォントです。  
 　　　　グリフはそのままに、文字の左右スペースを削り、プロポーショナル文字っぽく作成しました。  
 　　　　ただし、数字(0-9)は幅固定しています。  
-　　　・Myrica N
+　　　・Myrica N  
 　　　　幅を狭くしたフォントです。一定幅で多くの文字を表示できるように作成しました。  
 　　　　グリフは、半角文字:68%、全角かな文字:65%、その他の全角文字:60% に縮小し、  
 　　　　文字の左右スペースを削り、プロポーショナル文字っぽく作成しました。  
 　　　　ただし、数字(0-9)は幅固定しています。  
 
 * ### MyricaM.ttc
-　　　Mgen+ をベースとした以下の３フォントをパッケージしたファイルです。  
+　　　ASCII文字は Inconsolata、それ以外の文字は Mgen+ をベースとした以下の３フォントをパッケージしたファイルです。  
 　　　・MyricaM M  
 　　　・MyricaM P  
 　　　・MyricaM N  
@@ -175,11 +176,10 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 
 ## [MyricaM 改版履歴](MyricaM_改版履歴.md "MyricaM 改版履歴")  
 
-  
-  
-  
-  
 
+
+
+#  
 # ペン字練習 (美漢字ノート)  
 きれいなペン字が書きたい場合はこちら  
 [![PENJI](http://kanji-note.jp/aff/file/image/201502/67b031d38be778cc704efe4756e178e3.png)](http://kanji-note.jp/aff/link.php?id=N0000002&adwares=A0000001)  
