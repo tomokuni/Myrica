@@ -5,10 +5,10 @@ Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォ
 
 ###### 配布ファイル  
 フォントファイルだけが必要な場合は、7z または zip ファイルだけを取得するとダウンロードサイズが小さくて便利です。  
-Myrica.7z  約4MB   https://github.com/tomokuni/Myrica/raw/master/Myrica.7z  
-Myrica.zip  約9MB   https://github.com/tomokuni/Myrica/raw/master/Myrica.zip  
-MyricaM.7z  約4MB   https://github.com/tomokuni/Myrica/raw/master/MyricaM.7z  
-MyricaM.zip  約9MB   https://github.com/tomokuni/Myrica/raw/master/MyricaM.zip  
+* Myrica.7z　約4MB https://github.com/tomokuni/Myrica/raw/master/Myrica.7z  
+* Myrica.zip　約9MB https://github.com/tomokuni/Myrica/raw/master/Myrica.zip  
+* MyricaM.7z　約4MB https://github.com/tomokuni/Myrica/raw/master/MyricaM.7z  
+* MyricaM.zip　約9MB https://github.com/tomokuni/Myrica/raw/master/MyricaM.zip  
 
 
 
