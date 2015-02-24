@@ -180,7 +180,7 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
   
   
 
-## ペン字練習 (美漢字ノート)  
+# ペン字練習 (美漢字ノート)  
 きれいなペン字が書きたい場合はこちら  
 [![PENJI](http://kanji-note.jp/aff/file/image/201502/67b031d38be778cc704efe4756e178e3.png)](http://kanji-note.jp/aff/link.php?id=N0000002&adwares=A0000001)  
 [![PENJI](http://kanji-note.jp/aff/file/image/201502/0ef2c59ee906b97b8b39dac5b4fef722.png)](http://kanji-note.jp/aff/link.php?id=N0000002&adwares=A0000001)  
