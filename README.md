@@ -172,6 +172,7 @@ http://mix-mplus-ipa.sourceforge.jp/migu/
 
 
 ## Myrica 改版履歴  
+## [Myrica 改版履歴](Myrica_改版履歴.md "Myrica 改版履歴")
 
 #### Version 2.005.20150220  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  

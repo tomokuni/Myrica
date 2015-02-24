@@ -396,7 +396,7 @@ if scalingDownIfWidth_flag == True:
     scalingDownIfWidth(fGs, 0.91, 0.91)
     # 平仮名/片仮名のサイズを調整
     select(fGs, (charZHKana,charZKKana))
-    scalingDownIfWidth(fGs, 0.91, 0.86)
+    scalingDownIfWidth(fGs, 0.95, 0.95)
     # 全角英数の高さを調整 (半角英数の高さに合わせる)
     select(fGs, charZEisu)
     scalingDownIfWidth(fGs, 0.91, 0.86)
