@@ -2,6 +2,8 @@
 Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォントです。  
 視認性、判別性 が高くなるように、複数のフォントファイルを元に合成/修正しました。  
 
+
+###### 配布ファイル  
 フォントファイルだけが必要な場合は、7z または zip ファイルだけを取得するとダウンロードサイズが小さくて便利です。  
 Myrica.7z  約4MB   https://github.com/tomokuni/Myrica/raw/master/Myrica.7z  
 Myrica.zip  約9MB   https://github.com/tomokuni/Myrica/raw/master/Myrica.zip  
