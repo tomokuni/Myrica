@@ -18,7 +18,7 @@
 #     ～〜（FULLWIDTH TILDE・WAVE DASH）の区別
 
 # version
-newfont_version      = "2.005.20150223"
+newfont_version      = "2.006.20150301"
 newfont_sfntRevision = 0x00010000
 
 # set font name
@@ -507,19 +507,25 @@ fMp.os2_panose = tuple(panose)
 # modify
 print "modify"
 
+# 全角かな
+zkana = (50, 0.90, 1.00, rng(0x3041,0x31FF))
 # 全角
-zenkaku = (60,)
+zetc  = (50, 0.95, 1.00,)
 # 半角
-hankaku = (50,)
+hetc  = (60,)
 
 # 全文字の幅の自動設定
 fMp.selection.all()
 for glyph in fMp.selection.byGlyphs:
     #print glyph.glyphname + ", code " + str(glyph.unicode) + ", width " + str(glyph.width)
-    if glyph.width == newfont_em:         # 全角文字
-        setAutoWidthGlyph(glyph, zenkaku[0])
-    else:                                 # 半角文字
-        setAutoWidthGlyph(glyph, hankaku[0])
+    if glyph.unicode in zkana[3]:           # 全角かな
+        glyph.transform(matRescale(0, 0, zkana[1], zkana[2]))
+        setAutoWidthGlyph(glyph, zkana[0])
+    elif glyph.width == newfont_em:         # その他の全角文字
+        glyph.transform(matRescale(0, 0, zetc[1], zetc[2]))
+        setAutoWidthGlyph(glyph, zetc[0])
+    else:                                   # 半角文字
+        setAutoWidthGlyph(glyph, hetc[0])
 
 # 半角数字は幅固定で中央配置
 select(fMp, rng(0x0030,0x0039))   # 0-9
@@ -564,18 +570,12 @@ fMn.os2_panose = tuple(panose)
 # modify
 print "modify"
 
-# 半角英数
-heisu = (0.68, 1.00, 50, (rng(0x0030,0x0039), rng(0x0041,0x005A), rng(0x0061,0x007A)))
-# 半角記号
-hkigo = (0.68, 1.00, 50, (rng(0x0021,0x002F), rng(0x003A,0x0040), rng(0x005B,0x0060), rng(0x007B,0x007E)))
 # 全角かな
-zkana = (0.55, 1.00, 50, rng(0x3041,0x31FF))
-# 半角かな
-hkana = (0.68, 1.00, 50, rng(0xFF66,0xFF9F))
+zkana = (50, 0.55, 1.00, rng(0x3041,0x31FF))
 # その他の全角文字
-zetc  = (0.60, 1.00, 50)
+zetc  = (50, 0.60, 1.00)
 # その他の半角文字
-hetc  = (0.68, 1.00, 50)
+hetc  = (50, 0.68, 1.00)
 
 # 拡大縮小 と 幅の自動設定
 fMn.selection.all()
@@ -583,17 +583,17 @@ for glyph in fMn.selection.byGlyphs:
     #print glyph.glyphname + ", code " + str(glyph.unicode) + ", width " + str(glyph.width)
     glyph.ttinstrs = ()
     if glyph.unicode in zkana[3]:           # 全角かな
-        glyph.transform(matRescale(0, 0, zkana[0], zkana[1]))
-        setAutoWidthGlyph(glyph, zkana[2])
+        glyph.transform(matRescale(0, 0, zkana[1], zkana[2]))
+        setAutoWidthGlyph(glyph, zkana[0])
     elif glyph.width == newfont_em:         # その他の全角文字
-        glyph.transform(matRescale(0, 0, zetc[0],  zetc[1]))
-        setAutoWidthGlyph(glyph, zetc[2])
+        glyph.transform(matRescale(0, 0, zetc[1],  zetc[2]))
+        setAutoWidthGlyph(glyph, zetc[0])
     else:                                   # 半角文字
-        glyph.transform(matRescale(0, 0, hetc[0],  hetc[1]))
+        glyph.transform(matRescale(0, 0, hetc[1],  hetc[2]))
         bb = glyph.boundingBox()
-        nw = (bb[2] - bb[0]) + hetc[2] * 2
+        nw = (bb[2] - bb[0]) + hetc[0] * 2
         if glyph.width > nw:
-            setAutoWidthGlyph(glyph, hetc[2])
+            setAutoWidthGlyph(glyph, hetc[0])
 
 # 半角数字は幅固定で中央配置
 select(fMn, rng(0x0030,0x0039))   # 0-9

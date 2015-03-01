@@ -1,5 +1,12 @@
 ## MyricaM 改版履歴  
 
+#### Version 2.006.20150301  
+　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
+　　Mgen+       : mgenplus-1m-thin.ttf (1.059.20150116)  
+
+* プロポーショナル の文字幅を 全角かな文字:90%、その他の全角文字:95% に調整
+
+
 #### Version 2.005.20150223  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
 　　Mgen+       : mgenplus-1m-thin.ttf (1.059.20150116)  
