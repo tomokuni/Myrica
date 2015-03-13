@@ -19,11 +19,11 @@ xwin-close.exe -close
 
 echo .
 echo TTCÇÃçÏê¨
-..\..\UniteTTC.exe ..\MyricaM.TTC  ..\Work\MyricaMM.ttf  ..\Work\MyricaMP.ttf  ..\Work\MyricaMN.ttf
+..\..\UniteTTC.exe ..\product\MyricaM.TTC  ..\Work\MyricaMM.ttf  ..\Work\MyricaMP.ttf  ..\Work\MyricaMN.ttf
 
 echo .
 echo à≥èkÉtÉ@ÉCÉãÇÃçÏê¨
-..\..\7za.exe a -m0=LZMA2 -mx=9 -ms=on -mhc=on ..\MyricaM.7z ..\LICENSE_Apache.txt ..\LICENSE_M+.txt ..\LICENSE_OFL.txt ..\MyricaM.TTC ..\README.md
-..\..\7za.exe a ..\MyricaM.zip ..\LICENSE_Apache.txt ..\LICENSE_M+.txt ..\LICENSE_OFL.txt ..\MyricaM.TTC ..\README.md
+..\..\7za.exe a -m0=LZMA2 -mx=9 -ms=on -mhc=on ..\product\MyricaM.7z  ..\product\LICENSE_Apache.txt ..\product\LICENSE_M+.txt ..\product\LICENSE_OFL.txt ..\product\MyricaM.TTC ..\README.md ..\product\MyricaM_â¸î≈óöó.md
+..\..\7za.exe a                                ..\product\MyricaM.zip ..\product\LICENSE_Apache.txt ..\product\LICENSE_M+.txt ..\product\LICENSE_OFL.txt ..\product\MyricaM.TTC ..\README.md ..\product\MyricaM_â¸î≈óöó.md
 
 pause

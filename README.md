@@ -3,15 +3,6 @@ Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォ
 視認性、判別性 が高くなるように、複数のフォントファイルを元に合成/修正しました。  
 
 
-#### 配布ファイル  
-フォントファイルだけが必要な場合は、7z または zip ファイルだけを取得するとダウンロードサイズが小さくて便利です。  
-* Myrica.7z　約4MB https://github.com/tomokuni/Myrica/raw/master/Myrica.7z  
-* Myrica.zip　約9MB https://github.com/tomokuni/Myrica/raw/master/Myrica.zip  
-* MyricaM.7z　約4MB https://github.com/tomokuni/Myrica/raw/master/MyricaM.7z  
-* MyricaM.zip　約9MB https://github.com/tomokuni/Myrica/raw/master/MyricaM.zip  
-
-
-
 ## フォントの特徴  
 多くの特徴をプログラミング用フォント Ricty から継承しています。  
 
@@ -33,25 +24,31 @@ Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォ
 
 
 
-## フォント構成  
+## フォント構成 / 配布ファイル  
 
-* ### Myrica.ttc
-ASCII文字は Inconsolata、それ以外の文字は 源真ゴシック をベースとした以下の３フォントをパッケージしたファイルです。  
+### Myrica.ttc  
+ASCII文字は Inconsolata、それ以外の文字は 源真ゴシック をベースとした以下の３フォントをパッケージしたファイルです。
+* 7z圧縮版　約4MB https://github.com/tomokuni/Myrica/raw/master/product/Myrica.7z  
+* zip圧縮版　約9MB https://github.com/tomokuni/Myrica/raw/master/product/Myrica.zip  
+  
 ###### Myrica M  
-　等幅フォントです。プログラミング用に作成しました。  
-###### Myrica P  
-　なんちゃってプロポーショナルフォントです。  
-　グリフは、全角かな文字:90%、その他の全角文字:95% に縮小し、  
-　文字の左右スペースを削り、プロポーショナル文字っぽく作成しました。  
-　ただし、数字(0-9)は幅固定しています。  
-###### Myrica N  
-　幅を狭くしたフォントです。一定幅で多くの文字を表示できるように作成しました。  
-　グリフは、半角文字:68%、全角かな文字:55%、その他の全角文字:60% に縮小し、  
-　文字の左右スペースを削り、プロポーショナル文字っぽく作成しました。  
-　ただし、数字(0-9)は幅固定しています。  
+* 等幅フォントです。プログラミング用に作成しました。  
 
-* ### MyricaM.ttc
+###### Myrica P  
+* なんちゃってプロポーショナルフォントです。  
+グリフは、全角かな文字:90%、その他の全角文字:95% に縮小し、文字の左右スペースを削り、プロポーショナル文字っぽく作成しました。  
+ただし、数字(0-9)は幅固定しています。  
+
+###### Myrica N  
+* 幅を狭くしたフォントです。一定幅で多くの文字を表示できるように作成しました。  
+グリフは、半角文字:68%、全角かな文字:55%、その他の全角文字:60% に縮小し、文字の左右スペースを削り、プロポーショナル文字っぽく作成しました。  
+ただし、数字(0-9)は幅固定しています。  
+
+### MyricaM.ttc  
 ASCII文字は Inconsolata、それ以外の文字は Mgen+ をベースとした以下の３フォントをパッケージしたファイルです。  
+* 7z圧縮版　約4MB https://github.com/tomokuni/Myrica/raw/master/product/MyricaM.7z  
+* zip圧縮版　約9MB https://github.com/tomokuni/Myrica/raw/master/product/MyricaM.zip  
+  
 ###### MyricaM M  
 ###### MyricaM P  
 ###### MyricaM N  
@@ -93,7 +90,6 @@ ASCII文字(0x21-0x7E) を「Inconsolata」で置換え、さらに以下の変�
 * r にセリフ付き (Inconsolata に内包されている別のグリフで置換え)  
 * D にクロスバー付き (Inconsolata に内包されている別のグリフで置換え)  
 * | が破断線 (Inconsolata に内包されている別のグリフで置換え)  
-* "'`,.:; を大きめに修正  
 
 
 ASCII文字以外は「源真ゴシック」または「Mgen+」をベースとしました。  
@@ -103,6 +99,7 @@ ASCII文字以外は「源真ゴシック」または「Mgen+」をベースと�
 
 一部の文字を修正しました。  
 
+* "'`,.:; を大きめに補正  
 * 0x002a   * : astarisk (オリジナル)  
 * 0x006c   l : small letter l (オリジナル)  
 * 0x2013   – : en dash – (Ricty を参考に)  
@@ -175,9 +172,9 @@ http://store1.adobe.com/cfusion/store/html/index.cfm?store=OLS-JP&event=displayF
 http://mix-mplus-ipa.sourceforge.jp/migu/  
 
 
-## [Myrica 改版履歴](Myrica_改版履歴.md "Myrica 改版履歴")  
+## [Myrica 改版履歴](product/Myrica_改版履歴.md "Myrica 改版履歴")  
 
-## [MyricaM 改版履歴](MyricaM_改版履歴.md "MyricaM 改版履歴")  
+## [MyricaM 改版履歴](product/MyricaM_改版履歴.md "MyricaM 改版履歴")  
 
 
 

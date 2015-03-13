@@ -1,5 +1,12 @@
 ## Myrica 改版履歴  
 
+#### Version 2.007.20150313  
+　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
+　　源真ゴシック : GenShinGothic-Monospace-ExtraLight.ttf (1.001.20150116)  
+
+* かな文字のヒンティングの調整
+
+
 #### Version 2.006.20150301  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
 　　源真ゴシック : GenShinGothic-Monospace-ExtraLight.ttf (1.001.20150116)  

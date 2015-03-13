@@ -18,7 +18,7 @@
 #     ～〜（FULLWIDTH TILDE・WAVE DASH）の区別
 
 # version
-newfont_version      = "2.006.20150301"
+newfont_version      = "2.007.20150313"
 newfont_sfntRevision = 0x00010000
 
 # set font name
@@ -492,7 +492,7 @@ fRp.close()
 ########################################
 print
 print "Build " + newfontP[0]
-fMp = fontforge.open( newfontM[0] )
+fMp = fontforge.open( outfontNoHint )
 
 # pre-process
 fMp.fontname   = newfontP[1]
@@ -555,7 +555,7 @@ fMp.close()
 ########################################
 print
 print "Build " + newfontN[0]
-fMn = fontforge.open( newfontM[0] )
+fMn = fontforge.open( outfontNoHint )
 
 # pre-process
 fMn.fontname   = newfontN[1]
