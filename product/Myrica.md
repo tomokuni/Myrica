@@ -15,7 +15,6 @@ Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォ
 以下の文字にはヒンティング情報がありますので、Windowsでもクッキリしています。  
 
 * ASCII文字はヒンティング付きの Inconsolata から、ヒンティング情報を継承しています。  
-* 平仮名と片仮名にもヒンティング情報を付加しています。  
 
 
 
@@ -29,7 +28,7 @@ Myrica （ミリカ）は、フリーなプログラミング用 TrueType フォ
 ### Myrica.ttc  
 ASCII文字は Inconsolata、それ以外の文字は 源真ゴシック をベースとした以下の３フォントをパッケージしたファイルです。
 * 7z圧縮版　約4MB https://github.com/tomokuni/Myrica/raw/master/product/Myrica.7z  
-* zip圧縮版　約9MB https://github.com/tomokuni/Myrica/raw/master/product/Myrica.zip  
+* zip圧縮版　約8MB https://github.com/tomokuni/Myrica/raw/master/product/Myrica.zip  
   
 ###### Myrica M  
 * 等幅フォントです。プログラミング用に作成しました。  
@@ -47,7 +46,7 @@ ASCII文字は Inconsolata、それ以外の文字は 源真ゴシック をベ�
 ### MyricaM.ttc  
 ASCII文字は Inconsolata、それ以外の文字は Mgen+ をベースとした以下の３フォントをパッケージしたファイルです。  
 * 7z圧縮版　約4MB https://github.com/tomokuni/Myrica/raw/master/product/MyricaM.7z  
-* zip圧縮版　約9MB https://github.com/tomokuni/Myrica/raw/master/product/MyricaM.zip  
+* zip圧縮版　約8MB https://github.com/tomokuni/Myrica/raw/master/product/MyricaM.zip  
   
 ###### MyricaM M  
 ###### MyricaM P  
@@ -106,24 +105,21 @@ ASCII文字以外は「源真ゴシック」または「Mgen+」をベースと�
 * 0x2014   — : em dash — (Ricty を参考に)  
 * 「ぱぴぷぺぽパピプペポ」の半濁点を大きくして、濁点と判別しやすく。(Migu を参考に)  
 * 「カ力 エ工 ロ口 ー一 ニ二」（カタカナ・漢字）の区別。(Migu を参考に)  
-*  「～〜」（FULLWIDTH TILDE・WAVE DASH）の区別。(Migu を参考に)  
+* 「～〜」（FULLWIDTH TILDE・WAVE DASH）の区別。(Migu を参考に)  
+* 「ー一－」（カタカナ・漢字・マイナス）の区別
 
 
 
 ## ライセンスと著作権について  
-「SIL OPEN FONT LICENSE Version 1.1」と「Apache 2.0 License」のデュアルライセンスです。
+「SIL OPEN FONT LICENSE Version 1.1」によるライセンスです。
 
 * ASCII文字は、Inconsolata と同じ SIL OPEN FONT LICENSE Version 1.1 のもとで使用することができます。  
-* ASCII文字以外 は、源真ゴシック/Mgen+ と同じ Apache 2.0 License のもとで使用することができます。  
+* ASCII文字以外も、源真ゴシック/Mgen+ と同じ SIL OPEN FONT LICENSE Version 1.1 のもとで使用することができます。  
 * 源真ゴシック/Mgen+ には M+ OUTLINE FONTS 由来の文字グリフが含まれています。  
 
 SIL OPEN FONT LICENSE Version 1.1 の内容は、アーカイブに同梱の LICENSE_OFL.txt に記載されています。  
 この日本語訳は、以下から参照することができます。  
 http://sourceforge.jp/projects/opensource/wiki/SIL_Open_Font_License_1.1  
-
-Apache 2.0 License の内容は、アーカイブに同梱の LICENSE_Apache.txt に記載されています。  
-この日本語訳は、以下から参照することができます。  
-http://sourceforge.jp/projects/opensource/wiki/licenses%2FApache_License_2.0  
 
 M+ OUTLINE FONTS のグリフは、同梱のファイル LICENSE_M+.txt に記載された自由なM+ FONTS LICENSE に基づき使用しています  
 
@@ -172,6 +168,6 @@ http://store1.adobe.com/cfusion/store/html/index.cfm?store=OLS-JP&event=displayF
 http://mix-mplus-ipa.sourceforge.jp/migu/  
 
 
-## [Myrica 改版履歴](product/Myrica_改版履歴.md "Myrica 改版履歴")  
+## [Myrica 改版履歴](Myrica_改版履歴.md "Myrica 改版履歴")  
 
-## [MyricaM 改版履歴](product/MyricaM_改版履歴.md "MyricaM 改版履歴")  
+## [MyricaM 改版履歴](MyricaM_改版履歴.md "MyricaM 改版履歴")  

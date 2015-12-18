@@ -1,10 +1,24 @@
 ## MyricaM 改版履歴  
 
+#### Version 2.009.20151218  
+　　Inconsolata : Inconsolata-Regular.ttf (1.016 Google Fonts)  
+　　Mgen+       : mgenplus-1m-light.ttf (1.059.20150602)  
+
+* Mgen+のバージョンアップに追従して更新  
+* Inconsolataのバージョンアップに追従して更新  
+
+* font.os2_typodescent, font.hhea_descent の指定に誤りがあったので修正
+
+* 一部の記号 ()[]{}| がフォントサイズによっては等幅にならない現象の修正
+
+* ひらがな・カタカナのヒンティングの品質が良くなかったので、取りやめ (ASCII文字については従来通り有効)
+
+
 #### Version 2.008.20151209  
 　　Inconsolata : Inconsolata-Regular.ttf (1.013 Google Fonts)  
 　　Mgen+       : mgenplus-1m-thin.ttf (1.059.20150116)  
 
-* ー(長音記号)の文字をー(マイナス)と区別するため、字形を変更した
+* ー(長音記号)の文字を－(マイナス)と区別するため、字形を変更した
 
 
 #### Version 2.007.20150313  
