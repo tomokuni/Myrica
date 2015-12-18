@@ -168,6 +168,6 @@ http://store1.adobe.com/cfusion/store/html/index.cfm?store=OLS-JP&event=displayF
 http://mix-mplus-ipa.sourceforge.jp/migu/  
 
 
-## [Myrica 改版履歴](product/Myrica_改版履歴.md "Myrica 改版履歴")  
+## [Myrica 改版履歴](Myrica_改版履歴.md "Myrica 改版履歴")  
 
-## [MyricaM 改版履歴](product/MyricaM_改版履歴.md "MyricaM 改版履歴")  
+## [MyricaM 改版履歴](MyricaM_改版履歴.md "MyricaM 改版履歴")  
