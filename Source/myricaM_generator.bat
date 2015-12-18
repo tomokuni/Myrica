@@ -23,7 +23,7 @@ echo TTC‚Ìì¬
 
 echo .
 echo ˆ³kƒtƒ@ƒCƒ‹‚Ìì¬
-..\..\7za.exe a -m0=LZMA2 -mx=9 -ms=on -mhc=on ..\product\MyricaM.7z  ..\product\LICENSE_Apache.txt ..\product\LICENSE_M+.txt ..\product\LICENSE_OFL.txt ..\product\MyricaM.TTC ..\README.md ..\product\MyricaM_‰ü”Å—š—ğ.md
-..\..\7za.exe a                                ..\product\MyricaM.zip ..\product\LICENSE_Apache.txt ..\product\LICENSE_M+.txt ..\product\LICENSE_OFL.txt ..\product\MyricaM.TTC ..\README.md ..\product\MyricaM_‰ü”Å—š—ğ.md
+..\..\7za.exe a -m0=LZMA2 -mx=9 -ms=on -mhc=on ..\product\MyricaM.7z  ..\product\LICENSE_M+.txt ..\product\LICENSE_OFL.txt ..\product\MyricaM.TTC ..\README.md ..\product\MyricaM_‰ü”Å—š—ğ.md
+..\..\7za.exe a                                ..\product\MyricaM.zip ..\product\LICENSE_M+.txt ..\product\LICENSE_OFL.txt ..\product\MyricaM.TTC ..\README.md ..\product\MyricaM_‰ü”Å—š—ğ.md
 
 pause
