@@ -1,5 +1,12 @@
 ## Myrica 改版履歴  
 
+#### Version 2.010.20160103  
+　　Inconsolata : Inconsolata-Regular.ttf (1.016 Google Fonts)  
+　　源真ゴシック : GenShinGothic-Monospace-Light.ttf (1.002.20150607)  
+
+* 一部の記号がフォントサイズによっては等幅にならない現象の修正  
+
+
 #### Version 2.009.20151218  
 　　Inconsolata : Inconsolata-Regular.ttf (1.016 Google Fonts)  
 　　源真ゴシック : GenShinGothic-Monospace-Light.ttf (1.002.20150607)  
@@ -7,11 +14,11 @@
 * 源真ゴシックのバージョンアップに追従して更新  
 * Inconsolataのバージョンアップに追従して更新  
 
-* font.os2_typodescent, font.hhea_descent の指定に誤りがあったので修正
+* font.os2_typodescent, font.hhea_descent の指定に誤りがあったので修正  
 
-* 一部の記号 ()[]{}| がフォントサイズによっては等幅にならない現象の修正
+* 一部の記号 ()[]{}| がフォントサイズによっては等幅にならない現象の修正  
 
-* ひらがな・カタカナのヒンティングの品質が良くなかったので、取りやめ (ASCII文字については従来通り有効)
+* ひらがな・カタカナのヒンティングの品質が良くなかったので、取りやめ (ASCII文字については従来通り有効)  
 
 
 #### Version 2.008.20151209  

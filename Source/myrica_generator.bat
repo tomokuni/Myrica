@@ -7,9 +7,7 @@ set TZ=
 set DISPLAY=:9.0
 set AUTOTRACE=potrace
 
-del ..\Work\MyricaM.ttf
-del ..\Work\MyricaP.ttf
-del ..\Work\MyricaN.ttf
+del /F /S /Q ..\Work
 
 start /B XWin.exe :9 -multiwindow -nomultimonitors -silent-dup-error
 

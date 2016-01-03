@@ -19,7 +19,7 @@
 #     ー一－（カタカナ・漢字・マイナス）の区別
 
 # version
-newfont_version      = "2.009.20151218"
+newfont_version      = "2.010.20160103"
 newfont_sfntRevision = 0x00010000
 
 # set font name
@@ -243,7 +243,7 @@ def setFontProp(font, fontInfo):
     font.head_optimized_for_cleartype = True
 
     font.os2_panose = panoseBase
-    font.os2_vendor = "MM"
+    font.os2_vendor = "ES"
     font.os2_version = 1
 
     font.os2_winascent       = newfont_winAscent
@@ -331,7 +331,7 @@ copyAndPaste(fIn, 0x0110, fIn, 0x0044)
 # r -> r of serif (Inconsolata's unused glyph)
 copyAndPaste(fIn,  65548, fIn, 0x0072)
 
-removeHintAndInstr(fIn, 0x0022, 0x0027, 0x0060, list(u",.:;()~[]{}|"))
+removeHintAndInstr(fIn, 0x0022, 0x0027, 0x0060, list(u"\"'`,.:;()~[]{}|"))
 
 # modify em
 fIn.em  = newfont_em
