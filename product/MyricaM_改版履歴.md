@@ -1,5 +1,12 @@
 ## MyricaM 改版履歴  
 
+#### Version 2.011.20160403  
+　　Inconsolata : Inconsolata-Regular.ttf (1.016 Google Fonts)  
+　　Mgen+       : mgenplus-1m-light.ttf (1.059.20150602)  
+
+* mgenplusから継承している×が半角サイズなため、GenShinGothicの×に置き換えて全角となるように修正  
+
+
 #### Version 2.010.20160103  
 　　Inconsolata : Inconsolata-Regular.ttf (1.016 Google Fonts)  
 　　Mgen+       : mgenplus-1m-light.ttf (1.059.20150602)  

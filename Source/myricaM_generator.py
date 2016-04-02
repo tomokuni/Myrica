@@ -19,7 +19,7 @@
 #     ー一－（カタカナ・漢字・マイナス）の区別
 
 # version
-newfont_version      = "2.010.20160103"
+newfont_version      = "2.011.20160403"
 newfont_sfntRevision = 0x00010000
 
 # set font name
