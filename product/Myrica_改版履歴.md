@@ -1,5 +1,12 @@
 ## Myrica 改版履歴  
 
+#### Version 2.012.20180119  
+　　Inconsolata : Inconsolata-Regular.ttf (1.016 Google Fonts)  
+　　源真ゴシック : GenShinGothic-Monospace-Light.ttf (1.002.20150607)  
+
+* TeraTermで下線が表示されない現象に対処  
+
+
 #### Version 2.010.20160103  
 　　Inconsolata : Inconsolata-Regular.ttf (1.016 Google Fonts)  
 　　源真ゴシック : GenShinGothic-Monospace-Light.ttf (1.002.20150607)  

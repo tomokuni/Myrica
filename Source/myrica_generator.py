@@ -19,7 +19,7 @@
 #     ー一－（カタカナ・漢字・マイナス）の区別
 
 # version
-newfont_version      = "2.010.20160103"
+newfont_version      = "2.012.20180119"
 newfont_sfntRevision = 0x00010000
 
 # set font name
@@ -260,6 +260,8 @@ def setFontProp(font, fontInfo):
     font.hhea_descent        = newfont_hheaDescent
     font.hhea_descent_add    = 0
     font.hhea_linegap        = newfont_hheaLinegap
+
+    font.upos = 45
 
 charASCII  = rng(0x0021, 0x007E)
 charZHKana = list(u"ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをん"),

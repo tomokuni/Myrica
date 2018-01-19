@@ -1,5 +1,12 @@
 ## MyricaM 改版履歴  
 
+#### Version 2.012.20180119  
+　　Inconsolata : Inconsolata-Regular.ttf (1.016 Google Fonts)  
+　　Mgen+       : mgenplus-1m-light.ttf (1.059.20150602)  
+
+* TeraTermで下線が表示されない現象に対処  
+
+
 #### Version 2.011.20160403  
 　　Inconsolata : Inconsolata-Regular.ttf (1.016 Google Fonts)  
 　　Mgen+       : mgenplus-1m-light.ttf (1.059.20150602)  
